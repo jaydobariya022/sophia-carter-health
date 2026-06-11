@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Weird Thing My Doctor Said After I Lost 41 Pounds Without Changing My Diet</title>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1756996565463910');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1756996565463910&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream: #FAF7F2;
+      --warm: #F2EDE4;
+      --text: #1C1C1C;
+      --muted: #6B6560;
+      --accent: #2D6A4F;
+      --accent2: #40916C;
+      --gold: #D4A843;
+      --cta-bg: #E8521A;
+      --cta-hover: #C94010;
+      --divider: #DDD5C8;
+      --white: #FFFFFF;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 17px;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      padding: 9px 16px;
+      font-weight: 500;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--divider);
+      padding: 18px 20px;
+      text-align: center;
+    }
+
+    .byline-bar {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+    }
+
+    /* ── HERO HEADLINE ── */
+    .hero {
+      background: var(--white);
+      padding: 0 20px 32px;
+      text-align: center;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: clamp(22px, 4.5vw, 38px);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text);
+      max-width: 780px;
+      margin: 0 auto 14px;
+    }
+
+    .hero .sub-headline {
+      font-family: 'Merriweather', serif;
+      font-style: italic;
+      font-size: clamp(15px, 2.5vw, 19px);
+      color: var(--accent);
+      max-width: 680px;
+      margin: 0 auto 18px;
+    }
+
+    .hero .meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero .meta span {
+      margin: 0 6px;
+    }
+
+    /* ── IMAGE BLOCK ── */
+    .hero-image-block {
+      max-width: 720px;
+      margin: 24px auto 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--divider);
+      background: var(--warm);
+    }
+
+    .hero-image-block img {
+      width: 100%;
+      display: block;
+      /* REPLACE src BELOW WITH YOUR IMAGE */
+    }
+
+    .image-caption {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 8px 14px;
+      text-align: center;
+      font-style: italic;
+      background: var(--warm);
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .article-wrap p {
+      margin-bottom: 22px;
+      font-size: 17px;
+      color: var(--text);
+    }
+
+    .article-wrap strong {
+      color: #111;
+    }
+
+    .article-wrap em {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    /* section divider */
+    .section-break {
+      border: none;
+      border-top: 2px solid var(--divider);
+      margin: 36px 0;
+    }
+
+    .section-break-gold {
+      border: none;
+      border-top: 2px solid var(--gold);
+      margin: 36px 0;
+    }
+
+    /* pull quote */
+    .pullquote {
+      border-left: 4px solid var(--accent);
+      background: var(--warm);
+      padding: 18px 22px;
+      margin: 28px 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .pullquote p {
+      font-family: 'Merriweather', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--text);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* doctor quote */
+    .doctor-quote {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-left: 5px solid var(--gold);
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+
+    .doctor-quote p {
+      font-family: 'Merriweather', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: #333;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .doctor-quote .attribution {
+      font-size: 13px;
+      font-style: normal;
+      font-family: 'Inter', sans-serif;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* nutrient list */
+    .nutrient-list {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+
+    .nutrient-list h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 17px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .nutrient-list ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .nutrient-list ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--divider);
+      font-size: 15px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .nutrient-list ul li:last-child {
+      border-bottom: none;
+    }
+
+    .nutrient-list ul li::before {
+      content: "✓";
+      color: var(--accent2);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* benefits strip */
+    .benefits-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 28px 0;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+
+    .benefit-card .icon {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .benefit-card .label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1.3;
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-block {
+      text-align: center;
+      margin: 10px 0 32px;
+    }
+
+    .cta-pre {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(15px, 2.5vw, 19px);
+      font-style: italic;
+      color: var(--text);
+      max-width: 600px;
+      margin: 0 auto 16px;
+      line-height: 1.5;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--cta-bg);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: clamp(15px, 2.5vw, 18px);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 18px 38px;
+      border-radius: 4px;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(232, 82, 26, 0.35);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .cta-btn:hover {
+      background: var(--cta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(232, 82, 26, 0.45);
+    }
+
+    .cta-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .cta-arrow {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 6px;
+      animation: bounce 1.4s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    /* Footer styles are loaded dynamically from components/footer.js */
+
+    /* ── PROGRESS / READING BAR ── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent2);
+      width: 0%;
+      z-index: 999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .benefits-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nutrient-list {
+        padding: 18px 16px;
+      }
+
+      .cta-btn {
+        padding: 16px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Top Bar -->
+  <div class="topbar">🌿 Health &amp; Wellness — Reader Story</div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>The Weird Thing My Doctor Said After I Lost 41 Pounds Without Changing My Diet</h1>
+    <p class="sub-headline">"She looked at my chart and said: <em>'Whatever you're doing… your liver is doing something
+        I haven't seen in years.'"</em></p>
+    <p class="meta">
+      <strong>By Jennifer T.</strong>
+      <span>·</span>
+      Health &amp; Wellness
+      <span>·</span>
+      <span id="read-time">8 min read</span>
+    </p>
+
+    <!-- HERO IMAGE — replace src with your image URL -->
+    <div class="hero-image-block">
+      <img src="assets/images/jennifer 1.png" alt="Jennifer's transformation story" />
+      <div class="image-caption">Jennifer T. | Contributed reader story</div>
+    </div>
+  </div>
+
+  <!-- Article Body -->
+  <div class="article-wrap">
+
+    <p>I was <strong>52 years old</strong>… and I had <strong>tried everything.</strong></p>
+
+    <p>Every diet. Every "metabolism boost" trick I found on Pinterest.<br>
+      Keto. Intermittent fasting. Walking 10,000 steps a day.</p>
+
+    <p>And the scale? <strong>Barely moved.</strong></p>
+
+    <!-- ── CTA BLOCK 1 (after 3 paragraphs) ── -->
+    <hr class="section-break" />
+    <div class="cta-block">
+      <p class="cta-pre">
+        If you've been blaming yourself for weight that just won't move no matter what you do — <strong>this is the
+          story you've been waiting to read.</strong> Watch the free presentation before it's taken down.
+      </p>
+      <span class="cta-arrow">▼</span>
+      <a href="https://hop.clickbank.net/?vendor=livpure&affiliate=jayafl&lid=1&tid=liv" class="cta-btn" target="_blank"
+        rel="noopener">
+        👉 Yes! Show Me The Discovery →
+      </a>
+      <p class="cta-sub">Free presentation · Watch now</p>
+    </div>
+    <hr class="section-break" />
+
+    <p>Not only that — I was <strong>exhausted all the time.</strong><br>
+      Bone-tired by 2pm every single day.</p>
+
+    <p>My brain was foggy. I'd walk into a room and completely forget why I was there.<br>
+      My skin looked dull and puffy no matter how much water I drank.</p>
+
+    <p>And the belly fat — <strong>nothing touched it.</strong><br>
+      I'd lose 3 pounds, gain 4 back. Lose 2, gain 3 back.<br>
+      It felt like my body was <strong>working against me.</strong></p>
+
+    <div class="pullquote">
+      <p>"My doctor kept telling me: 'Just eat less and move more.' I wanted to scream. I WAS eating less. I WAS moving
+        more. Something wasn't working inside my body."</p>
+    </div>
+
+    <p>Then one afternoon I came across a health article about why people over 40 struggle with stubborn belly fat — and
+      I found something that genuinely <strong>stopped me cold.</strong></p>
+
+    <p>It wasn't about carbs. It wasn't about hormones (though that's what I always assumed).</p>
+
+    <p>It was about <strong>the liver.</strong></p>
+
+    <p>Specifically — <strong>what happens to your liver's fat-burning ability</strong> when it gets overloaded with the
+      everyday toxins we're all exposed to. Food additives. Tap water. Household cleaners. Even the shampoo we use every
+      morning.</p>
+
+    <hr class="section-break-gold" />
+    <h2 style="font-family:'Merriweather',serif; font-size:22px; margin-bottom:16px; color:#1C1C1C;">Here's What I
+      Didn't Know Before…</h2>
+
+    <p>Your liver isn't just a detox organ.</p>
+
+    <p><strong>It's actually your body's #1 fat-burning furnace.</strong></p>
+
+    <p>Everything you eat — healthy or not — eventually reaches your liver. And your liver is the one that decides:
+      <em>does this get burned as energy… or stored as belly fat?</em>
+    </p>
+
+    <p>When your liver is healthy and running clean, it can burn fat and calories <strong>efficiently, on autopilot — up
+        to 14x more efficiently</strong>, according to researchers.</p>
+
+    <p>But when it's overloaded with modern-day toxins?</p>
+
+    <p>According to researchers, this is the one common factor found in nearly all people who struggle with stubborn
+      weight — <strong>compromised liver function.</strong></p>
+
+    <p>Not laziness. Not willpower. Not "bad genetics."<br><strong>A sluggish, overloaded liver.</strong></p>
+
+    <hr class="section-break" />
+
+    <!-- Inline image slot 2 -->
+    <div class="hero-image-block" style="margin-bottom:24px;">
+      <img src="assets/images/jennifer 2.png" alt="Liver fat-burning discovery" />
+      <div class="image-caption">The liver — your body's real fat-burning furnace</div>
+    </div>
+
+    <p>I sat with that information for a few days. It actually made <em>so much sense</em> when I thought about my own
+      patterns.</p>
+
+    <p>The foggy thinking. The afternoon energy crashes. The skin that always looked tired. The hunger that never really
+      went away even after eating.</p>
+
+    <p>These weren't random problems. <strong>They were all connected.</strong></p>
+
+    <hr class="section-break-gold" />
+    <h2 style="font-family:'Merriweather',serif; font-size:22px; margin-bottom:16px; color:#1C1C1C;">The Mediterranean
+      Connection</h2>
+
+    <p>I started researching what actually supports healthy liver function — not juice cleanses or fad detoxes, but
+      <strong>real, clinically-studied nutrients.</strong>
+    </p>
+
+    <p>I found information about specific <strong>Mediterranean plants and natural compounds</strong> that have been
+      studied for their role in supporting liver purification and liver fat-burning specifically:</p>
+
+    <div class="nutrient-list">
+      <h3>🌿 Key Liver-Supporting Nutrients Researchers Have Studied:</h3>
+      <ul>
+        <li><strong>Silymarin</strong> (Milk Thistle) — studied for supporting liver cell regeneration and
+          detoxification</li>
+        <li><strong>Berberine</strong> — studied for its role in supporting liver health and fighting inflammation</li>
+        <li><strong>Resveratrol</strong> — found in Mediterranean plants, studied for supporting fat-burning and
+          metabolism</li>
+        <li><strong>Chlorogenic Acid</strong> — studied for improving calorie burning efficiency</li>
+        <li><strong>Glutathione</strong> — studied for liver regeneration support and toxin removal</li>
+        <li><strong>Camellia Sinensis</strong> — studied for supporting fat-burning and cardiovascular health</li>
+      </ul>
+    </div>
+
+    <p><em>I'm not a doctor. I'm not saying any of this treated or cured anything. I'm just saying — I started paying
+        attention to my liver in a way I never had before. And <strong>something shifted.</strong></em></p>
+
+    <hr class="section-break" />
+
+    <p>About six weeks in, I noticed my afternoon energy crashes had basically <strong>stopped.</strong></p>
+
+    <p>I wasn't reaching for coffee at 3pm anymore. My thinking felt <strong>clearer</strong> — sharper. I stopped
+      walking into rooms and forgetting why I was there.</p>
+
+    <p>My hunger felt more… <strong>manageable.</strong> I wasn't white-knuckling through cravings like before.</p>
+
+    <p>And then one morning I put on my jeans from last fall —</p>
+
+    <p><strong>They were loose.</strong></p>
+
+    <p>Not a little loose. <em>Noticeably</em> loose.</p>
+
+    <p>I stepped on the scale. I had lost <strong>11 pounds</strong> without starting a new diet. Without new workouts.
+    </p>
+
+    <p><strong>I just kept going.</strong></p>
+
+    <hr class="section-break-gold" />
+
+    <!-- ── CTA BLOCK 2 ── -->
+    <div class="cta-block">
+      <p class="cta-pre">
+        "I spent years blaming myself. If I'd only known about this sooner… <strong>don't wait another day like I
+          did.</strong> Watch this free presentation right now — your body deserves the truth."
+      </p>
+      <span class="cta-arrow">▼</span>
+      <a href="https://hop.clickbank.net/?vendor=livpure&affiliate=jayafl&lid=1&tid=liv" class="cta-btn" target="_blank"
+        rel="noopener">
+        👉 Watch The Free Presentation Now →
+      </a>
+      <p class="cta-sub">Thousands of women over 40 have already watched this </p>
+    </div>
+    <hr class="section-break" />
+
+    <p>By month two, I was down <strong>26 pounds.</strong></p>
+
+    <p>My skin — which had looked dull and tired for years — started getting compliments.</p>
+
+    <p><em>"You look like you're glowing."</em></p>
+
+    <p>That's literally what my neighbor said. I hadn't heard that word used to describe me in a long time.</p>
+
+    <p>My husband noticed too. He said I seemed <strong>"like myself again"</strong> — more energy in the evenings,
+      better mood, more present.</p>
+
+    <p>And the belly fat that had been stubborn for <strong>four years?</strong> It was finally moving.</p>
+
+    <hr class="section-break" />
+
+    <!-- Inline image slot 3 -->
+    <div class="hero-image-block" style="margin-bottom:24px;">
+      <img src="assets/images/jennifer 3.png" alt="Woman feeling energetic and confident" />
+      <div class="image-caption">More energy, clearer skin, and finally feeling like myself again</div>
+    </div>
+
+    <hr class="section-break-gold" />
+    <h2 style="font-family:'Merriweather',serif; font-size:22px; margin-bottom:16px; color:#1C1C1C;">What My Doctor Said
+      That Made Me Cry</h2>
+
+    <p>At my next checkup, my doctor reviewed my bloodwork and asked me what I'd been doing differently.</p>
+
+    <p>I told her I'd been focusing on <strong>liver health</strong> — specifically on liver purification and liver
+      fat-burning support using natural plant-based nutrients from the Mediterranean.</p>
+
+    <div class="doctor-quote">
+      <p>"Your metabolic markers look better than they did at 42. Your liver function is genuinely impressive. Whatever
+        you're doing — <strong>keep doing it.</strong>"</p>
+      <p class="attribution">— Jennifer's physician, during her routine checkup</p>
+    </div>
+
+    <p>I sat in my car after that appointment and just…</p>
+
+    <p><strong>I cried. Happy tears.</strong></p>
+
+    <p>Because for years I thought something was <em>wrong</em> with me. That my body was broken. That I was just one of
+      those people who couldn't lose weight no matter what.</p>
+
+    <p><strong>But it wasn't willpower. It wasn't discipline. It was my liver.</strong></p>
+
+    <p>And once I gave my liver what it needed to function properly — the fat-burning, the energy, the clear thinking —
+      <strong>it all followed naturally.</strong>
+    </p>
+
+    <hr class="section-break" />
+
+    <p>I lost <strong>41 pounds</strong> over the following months.</p>
+
+    <p>My hunger is regulated in a way it never was before. My skin looks healthier than it did in my 40s. I sleep
+      better. Think better. Feel better.</p>
+
+    <p>And I didn't follow a strict diet. I didn't do intense exercise.</p>
+
+    <p><strong>I just supported the organ that was working against me for years.</strong></p>
+
+    <hr class="section-break-gold" />
+
+    <p>If you've been struggling with <strong>stubborn belly fat, low energy, brain fog,</strong> or weight that won't
+      move no matter what you try —</p>
+
+    <p>Please look into the <strong>liver-metabolism connection.</strong></p>
+
+    <p>Read about how Mediterranean plants and natural liver-purification nutrients work. Watch the short presentation I
+      came across that explains the science behind all of this far better than I can.</p>
+
+    <p>That's all I'm asking. <strong>Just watch it.</strong></p>
+
+    <p>Because a year from now — I don't want you exhausted, frustrated, still blaming yourself for something that was
+      <em>never</em> about willpower.
+    </p>
+
+    <!-- ── CTA BLOCK 3 (Final) ── -->
+    <hr class="section-break" />
+    <div class="cta-block">
+      <p class="cta-pre">
+        <strong>"Three years of struggle ended the day I finally understood what my liver was doing to my metabolism.
+          Don't let another year go by. Watch this now — it changed my life and it might change yours."</strong>
+      </p>
+      <span class="cta-arrow">▼</span>
+      <a href="https://hop.clickbank.net/?vendor=livpure&affiliate=jayafl&lid=1&tid=liv" class="cta-btn" target="_blank"
+        rel="noopener">
+        👉 Yes! I Want To See This Discovery →
+      </a>
+      <p class="cta-sub">⏱️ Free to watch </p>
+    </div>
+
+    <hr class="section-break" />
+    <p style="font-size:14px; color:var(--muted); font-style:italic;">
+      Sweet health,<br><strong>Jennifer T.</strong>
+    </p>
+
+  </div><!-- /article-wrap -->
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script src="components/footer.js" defer></script>
+
+  <!-- Reading Progress Bar Script -->
+  <script>
+    window.addEventListener('scroll', function () {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+    });
+  </script>
+
+</body>
+
+</html>
