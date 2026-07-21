@@ -176,7 +176,8 @@ body {
     margin-bottom: 25px;
 }
 
-.img-molly {
+.img-molly,
+.img-diane {
     float: left;
     margin-right: 25px;
     margin-bottom: 10px;
@@ -424,7 +425,7 @@ body {
         margin-bottom: 20px;
     }
     
-    .img-molly, .img-tea2 {
+    .img-molly, .img-diane, .img-tea2 {
         float: none;
         display: block;
         margin: 0 auto 20px auto;
