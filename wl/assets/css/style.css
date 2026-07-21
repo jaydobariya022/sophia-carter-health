@@ -186,6 +186,22 @@ body {
     border-radius: 0;
 }
 
+.tea2-intro {
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.img-tea2 {
+    float: right;
+    margin-left: 25px;
+    margin-bottom: 10px;
+    width: 190px;
+    height: auto;
+    border: 1px solid #7f8c8d;
+    border-radius: 0;
+}
+
+
 .narrative-p {
     font-size: 1.325rem;
     color: var(--color-text);
@@ -408,7 +424,7 @@ body {
         margin-bottom: 20px;
     }
     
-    .img-molly {
+    .img-molly, .img-tea2 {
         float: none;
         display: block;
         margin: 0 auto 20px auto;
