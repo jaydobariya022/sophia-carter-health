@@ -22,6 +22,7 @@
             <p class="footer-disclaimer-paragraph">
                 The information on this website has not been evaluated by the Food & Drug Administration or any other medical body. We do not aim to diagnose, treat, cure or prevent any illness or disease. Information is shared for educational purposes only. You should always consult your doctor before acting on any content on this website, especially if you are pregnant, nursing, taking medication or have a medical condition.
             </p>
+            <script src="https://app.cometly.com/j"></script>
         </div>
     </footer>
     `;
