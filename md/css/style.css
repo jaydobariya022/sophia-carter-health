@@ -1,0 +1,478 @@
+/* ==========================================
+   RESET & BASE — Matching Bootstrap 3 base
+   ========================================== */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  /* Reference exact color */
+  background-color: rgb(225, 220, 224);
+  /* Reference exact font */
+  font-family: "Oxygen", Helvetica, sans-serif !important;
+  color: #2d2d2d;
+  font-size: 14px;
+  line-height: 1.42857143;
+  overflow-x: hidden;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 0 0 10px;
+  overflow-wrap: anywhere;
+}
+
+h1, h2 {
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+figure {
+  margin: 0;
+}
+
+/* ==========================================
+   PAGE WRAPPER
+   Bootstrap .container at ≥992px = 970px
+   wideContainer in ClickFunnels ~940-970px
+   ========================================== */
+.page-wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+  width: 100%;
+  background-color: rgb(255, 248, 255);
+  overflow: hidden;
+}
+
+/* ==========================================
+   SECTION 1 — HEADER
+   Reference: background-color: rgb(2, 175, 239)
+   padding20-top padding20-bottom padding40H
+   ========================================== */
+.section-header {
+  background-color: rgb(0, 175, 239);
+  /* Reference: padding20-top/bottom + containerInner 20px + col padding 10px each side */
+  padding: 20px 15px;
+}
+
+.section-header .inner-header {
+  /* containerInner: padding 20px + col-inner: padding 10px each side = 30px total */
+  padding: 16px 0;
+}
+
+/* Reference: font-size: 46px, Merriweather, black, centered */
+.section-header h1 {
+  font-family: "Merriweather", Helvetica, sans-serif !important;
+  font-size: 24px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  line-height: 1.35;
+  letter-spacing: 0;
+  margin: 0;
+  overflow-wrap: normal;
+}
+
+/* Reference: font-size: 23px, black, centered */
+.section-header .subheadline {
+  font-family: "Oxygen", Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin: 15px 0 0;
+  line-height: 1.3;
+}
+
+/* ==========================================
+   STORY SECTIONS
+   Reference: background-color: rgb(255, 248, 255)
+   padding: padding20H / padding40H
+   ========================================== */
+.section-story {
+  background-color: rgb(255, 248, 255);
+  /* containerInner 20px + col padding 15px each = 35px, section padding 20px top/bottom */
+  padding: 20px 15px;
+}
+
+/* ==========================================
+   BODY TEXT
+   Reference: font-size: 20px, left aligned
+   ========================================== */
+.section-story p,
+.section-closing p {
+  font-family: "Oxygen", Helvetica, sans-serif;
+  font-size: 18px;
+  color: #2d2d2d;
+  line-height: 1.58;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* Reference: font-size: 12px, italic, bold */
+.byline {
+  font-size: 12px !important;
+  color: #2d2d2d;
+  margin-bottom: 14px !important;
+  line-height: 1.4;
+}
+
+/* Reference: font-size: 28px, color: rgb(10,134,59), Rock Salt, italic */
+.signature-name {
+  font-family: "Rock Salt", cursive !important;
+  font-size: 28px !important;
+  color: rgb(10, 134, 59) !important;
+  font-style: italic;
+  margin-top: 15px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Reference: inline link color */
+.inline-link {
+  color: rgb(22, 70, 142);
+  text-decoration: underline;
+}
+
+/* ==========================================
+   TWO-COLUMN LAYOUT (Bootstrap .row + .col-md-6)
+   col-md-6 = 50% with 15px gutters each side
+   ========================================== */
+.two-col {
+  margin-left: 0;
+  margin-right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.col-text,
+.col-photo {
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  flex: 0 0 100%;
+}
+
+.col-photo {
+  margin-bottom: 24px;
+}
+
+/* ==========================================
+   PHOTO BLOCKS
+   Reference: width="250"
+   ========================================== */
+.photo-block {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.photo-block img {
+  width: 200px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* Reference: font-size: 18px, centered */
+.photo-block figcaption {
+  margin-top: 30px;
+  font-family: "Oxygen", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #2d2d2d;
+  text-align: center;
+}
+
+/* ==========================================
+   CLOSING SECTION
+   ========================================== */
+.section-closing {
+  background-color: rgb(255, 248, 255);
+  padding: 0 15px 20px;
+}
+
+/* ==========================================
+   CTA BUTTON SECTION
+   Reference: background: rgb(2,175,239), color: #000
+   font-size: 28px, full width, radius 3
+   margin-top: 30px
+   ========================================== */
+.section-cta {
+  background-color: rgb(255, 248, 255);
+  /* Minimal horizontal padding so button fits on one line at 1120px container */
+  padding: 0 15px 40px;
+}
+
+.cta-button {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 3px;
+  margin-top: 30px;
+  background: rgb(60, 185, 240);
+  color: rgb(0, 0, 0);
+  font-family: "Oxygen", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 150ms ease;
+  overflow-wrap: anywhere;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+  background: rgb(0, 158, 219);
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+/* ==========================================
+   FOOTER
+   Reference: background-color: rgb(204, 234, 252)
+   padding: 25px top, 100px bottom (paddingBottomBig)
+   60% width row centered
+   ========================================== */
+.site-footer {
+  background-color: rgb(204, 234, 252);
+  padding: 20px 15px 60px;
+}
+
+.footer-inner {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Reference: font-size: 12px, color: rgb(45,45,45) */
+.site-footer p {
+  font-family: "Oxygen", Helvetica, sans-serif;
+  font-size: 12px;
+  color: rgb(45, 45, 45);
+  margin: 0 auto 6px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.site-footer a {
+  color: rgb(45, 45, 45);
+  text-decoration: underline;
+}
+
+/* ── Footer nav pill buttons ── */
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0 12px;
+}
+
+.footer-btn {
+  display: inline-block;
+  font-family: "Oxygen", Helvetica, sans-serif;
+  font-size: 12px;
+  color: rgb(45, 45, 45);
+  background-color: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+  padding: 5px 14px;
+  text-decoration: none;
+  transition: background-color 0.18s ease;
+}
+
+.footer-btn:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+/* Mobile (Default) */
+/* 0px - 767px */
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .page-wrapper {
+    max-width: 100%;
+  }
+
+  .section-header {
+    padding: 20px 20px;
+  }
+
+  .section-header .inner-header {
+    padding: 20px 20px;
+  }
+
+  .section-header h1 {
+    font-size: 36px;
+  }
+
+  .section-header .subheadline {
+    font-size: 21px;
+  }
+
+  .section-story,
+  .section-closing,
+  .section-cta {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .section-story p,
+  .section-closing p {
+    font-size: 19px;
+    line-height: 1.62;
+  }
+
+  .two-col {
+    flex-direction: row;
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+
+  .col-text,
+  .col-photo {
+    width: 50%;
+    flex: 0 0 50%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .col-photo {
+    margin-bottom: 0;
+  }
+
+  .photo-block img {
+    width: 230px;
+  }
+
+  .cta-button {
+    font-size: 24px;
+    padding: 12px 20px;
+  }
+
+  .site-footer {
+    padding: 25px 25px 80px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .page-wrapper {
+    /* Reference wideContainer exact value */
+    max-width: 1120px;
+  }
+
+  .section-header {
+    padding: 20px 0;
+  }
+
+  .section-header .inner-header {
+    padding: 20px 30px;
+  }
+
+  .section-header h1 {
+    font-size: 46px;
+    line-height: 1.4;
+  }
+
+  .section-header .subheadline {
+    font-size: 23px;
+  }
+
+  .section-story {
+    padding: 20px 35px;
+  }
+
+  .section-story p,
+  .section-closing p {
+    font-size: 20px;
+    line-height: 1.65;
+  }
+
+  .two-col {
+    flex-direction: row;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  .col-text,
+  .col-photo {
+    width: 50%;
+    flex: 0 0 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .col-photo {
+    margin-bottom: 0;
+  }
+
+  .photo-block img {
+    width: 250px;
+  }
+
+  .section-closing {
+    padding: 0 35px 20px;
+  }
+
+  .section-cta {
+    padding: 0 35px 40px;
+  }
+
+  .cta-button {
+    font-size: 28px;
+    padding: 10px 25px;
+  }
+
+  .site-footer {
+    padding: 25px 40px 100px;
+  }
+
+  .footer-inner {
+    width: 60%;
+  }
+}
