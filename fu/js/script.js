@@ -21,7 +21,7 @@ var ATTRIBUTION_MAP = [
   ['utm_id',       'utm_id']
 ];
 
-var CLICKBANK_BASE_PARAMS = ['vendor', 'affiliate', 'lid'];
+var CLICKBANK_BASE_PARAMS = ['vendor', 'affiliate', 'cbpage', 'affop'];
 var OUTBOUND_LINK_SELECTOR = 'a[href*="hop.clickbank.net"], a[id^="cta"]';
 
 function isModifiedClick(e) {
