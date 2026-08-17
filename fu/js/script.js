@@ -11,14 +11,14 @@ if (yearTarget) {
 // Any old/unwanted params already on a ClickBank href are stripped first.
 
 var ATTRIBUTION_MAP = [
-  ['utm_content',  'tid'],
-  ['fbclid',       'fbclid'],
-  ['utm_source',   'utm_source'],
-  ['utm_medium',   'utm_medium'],
+  ['utm_content', 'tid'],
+  ['fbclid', 'fbclid'],
+  ['utm_source', 'utm_source'],
+  ['utm_medium', 'utm_medium'],
   ['utm_campaign', 'utm_campaign'],
-  ['utm_content',  'utm_content'],
-  ['utm_term',     'utm_term'],
-  ['utm_id',       'utm_id']
+  ['utm_content', 'utm_content'],
+  ['utm_term', 'utm_term'],
+  ['utm_id', 'utm_id']
 ];
 
 var CLICKBANK_BASE_PARAMS = ['vendor', 'affiliate', 'cbpage', 'affop'];
@@ -47,13 +47,13 @@ function getCleanClickBankUrl(baseUrl) {
 
 function appendForwardedParams(baseUrl) {
   try {
-    var src      = new URLSearchParams(window.location.search);
-    var url      = getCleanClickBankUrl(baseUrl);
+    var src = new URLSearchParams(window.location.search);
+    var url = getCleanClickBankUrl(baseUrl);
 
     ATTRIBUTION_MAP.forEach(function (pair) {
-      var srcKey  = pair[0];
+      var srcKey = pair[0];
       var destKey = pair[1];
-      var val     = src.get(srcKey);
+      var val = src.get(srcKey);
       if (!val) return;                  // param not in page URL → skip
       url.searchParams.set(destKey, val);
     });
@@ -66,7 +66,7 @@ function appendForwardedParams(baseUrl) {
 
 function updateForwardedLink(link) {
   var destination = appendForwardedParams(link.href);
-  try { link.setAttribute('href', destination); } catch (err) {}
+  try { link.setAttribute('href', destination); } catch (err) { }
   return destination;
 }
 
@@ -76,7 +76,7 @@ document.querySelectorAll(OUTBOUND_LINK_SELECTOR).forEach(function (link) {
 
   link.addEventListener('click', function (e) {
     var destination = updateForwardedLink(link);
-    var newTab      = link.target === '_blank' || isModifiedClick(e);
+    var newTab = link.target === '_blank' || isModifiedClick(e);
 
     if (newTab) {
       // Browser handles the updated href for new-tab clicks.
