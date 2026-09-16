@@ -1,0 +1,308 @@
+/* ==========================================
+   RESET & BASE
+   ========================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background-color: #f4f4f6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==========================================
+   PAGE WRAPPER
+   Center aligned card layout (max-width ~760px)
+   ========================================== */
+.page-wrapper {
+  margin: 0 auto;
+  max-width: 760px;
+  width: 100%;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.06);
+}
+
+.main-content {
+  padding: 30px 20px 10px;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding: 40px 45px 20px;
+  }
+}
+
+/* ==========================================
+   HEADER TITLE & SUBTITLE
+   ========================================== */
+.main-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #333333;
+  text-align: center;
+  line-height: 1.25;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.3px;
+}
+
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 28px;
+  }
+}
+
+.main-subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #555555;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0 0 20px 0;
+}
+
+@media (min-width: 768px) {
+  .main-subtitle {
+    font-size: 17px;
+  }
+}
+
+/* ==========================================
+   VIDEO LABEL & THUMBNAIL
+   ========================================== */
+.video-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #444444;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.video-wrapper {
+  margin: 0 auto 20px;
+  max-width: 680px;
+  text-align: center;
+}
+
+.video-link {
+  display: block;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.video-link:hover {
+  transform: scale(1.005);
+}
+
+.video-thumbnail-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+}
+
+.video-caption {
+  font-size: 13px;
+  font-weight: 700;
+  color: #222222;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   DIVIDER
+   ========================================== */
+.divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 22px 0 24px 0;
+}
+
+/* ==========================================
+   GREEN CTA BUTTON
+   ========================================== */
+.cta-container {
+  margin: 20px 0 26px 0;
+  text-align: center;
+}
+
+.green-cta-btn {
+  display: block;
+  width: 100%;
+  background-color: #168c46;
+  color: #ffffff !important;
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  padding: 13px 16px;
+  border-radius: 4px;
+  text-decoration: none !important;
+  line-height: 1.3;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 6px rgba(22, 140, 70, 0.25);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .green-cta-btn {
+    font-size: 23px;
+    padding: 15px 22px;
+  }
+}
+
+.green-cta-btn:hover {
+  background-color: #12753a;
+  box-shadow: 0 5px 12px rgba(18, 117, 58, 0.35);
+  text-decoration: none !important;
+}
+
+/* ==========================================
+   ARTICLE BODY CONTENT
+   ========================================== */
+.article-body {
+  font-size: 17px;
+  line-height: 1.62;
+  color: #333333;
+}
+
+@media (min-width: 768px) {
+  .article-body {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+}
+
+.article-body p {
+  margin: 0 0 18px 0;
+}
+
+.article-body strong {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.removal-heading {
+  font-size: 19px;
+  font-weight: 700;
+  color: #333333;
+  text-decoration: underline;
+  margin-top: 28px;
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  .removal-heading {
+    font-size: 20px;
+  }
+}
+
+/* ==========================================
+   TRUST BADGES BAR
+   Matches publisher logos in reference image
+   ========================================== */
+.trust-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 10px 15px;
+  margin-top: 35px;
+  border-top: 1px solid #eaeaea;
+}
+
+.trust-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 25px 40px;
+  width: 100%;
+}
+
+.badge-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.badge-item svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ==========================================
+   FOOTER
+   Exact match to existing footer specs
+   ========================================== */
+.site-footer {
+  background-color: #94FFE7;
+  padding: 25px 20px 50px;
+  margin-top: auto;
+}
+
+.footer-inner {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-footer p {
+  font-family: "Oxygen", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  color: rgb(45, 45, 45);
+  margin: 0 auto 8px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.site-footer a {
+  color: rgb(45, 45, 45);
+  text-decoration: underline;
+}
+
+.site-footer a:hover {
+  text-decoration: none;
+}
+
