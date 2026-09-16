@@ -1,31 +1,26 @@
 /* ==========================================
-   RESET & BASE — Matching Bootstrap 3 base
+   RESET & BASE
    ========================================== */
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 html {
   font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
 }
 
 body {
   margin: 0;
-  /* Reference exact color */
-  background-color: rgb(225, 220, 224);
-  /* Reference exact font */
-  font-family: "Oxygen", Helvetica, sans-serif !important;
-  color: #2d2d2d;
-  font-size: 14px;
-  line-height: 1.42857143;
-  overflow-x: hidden;
+  background-color: #f4f4f6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -41,254 +36,263 @@ a {
   color: inherit;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
-p {
-  margin: 0 0 10px;
-  overflow-wrap: anywhere;
-}
-
-h1, h2 {
-  margin: 0;
-  font-weight: 500;
-  line-height: 1.1;
-}
-
-figure {
-  margin: 0;
-}
-
 /* ==========================================
    PAGE WRAPPER
-   Bootstrap .container at ≥992px = 970px
-   wideContainer in ClickFunnels ~940-970px
+   Center aligned card layout (max-width ~760px)
    ========================================== */
 .page-wrapper {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 100%;
+  margin: 0 auto;
+  max-width: 760px;
   width: 100%;
-  background-color: rgb(255, 248, 255);
-  overflow: hidden;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.06);
+}
+
+.main-content {
+  padding: 30px 20px 10px;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding: 40px 45px 20px;
+  }
 }
 
 /* ==========================================
-   SECTION 1 — HEADER
-   Reference: background-color: rgb(2, 175, 239)
-   padding20-top padding20-bottom padding40H
+   HEADER TITLE & SUBTITLE
    ========================================== */
-.section-header {
-  background-color: #4db39c;
-  /* Reference: padding20-top/bottom + containerInner 20px + col padding 10px each side */
-  padding: 20px 15px;
-}
-
-.section-header .inner-header {
-  /* containerInner: padding 20px + col-inner: padding 10px each side = 30px total */
-  padding: 16px 0;
-}
-
-/* Reference: font-size: 46px, Merriweather, black, centered */
-.section-header h1 {
-  font-family: "Merriweather", Helvetica, sans-serif !important;
+.main-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 24px;
-  font-weight: 700;
-  color: rgb(0, 0, 0);
+  font-weight: 800;
+  color: #333333;
   text-align: center;
-  line-height: 1.35;
-  letter-spacing: 0;
-  margin: 0;
-  overflow-wrap: normal;
+  line-height: 1.25;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.3px;
 }
 
-/* Reference: font-size: 23px, black, centered */
-.section-header .subheadline {
-  font-family: "Oxygen", Helvetica, sans-serif;
-  font-size: 15px;
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 28px;
+  }
+}
+
+.main-subtitle {
+  font-size: 16px;
   font-weight: 500;
-  color: rgb(0, 0, 0);
+  color: #555555;
   text-align: center;
-  margin: 15px 0 0;
+  line-height: 1.4;
+  margin: 0 0 20px 0;
+}
+
+@media (min-width: 768px) {
+  .main-subtitle {
+    font-size: 17px;
+  }
+}
+
+/* ==========================================
+   VIDEO LABEL & THUMBNAIL
+   ========================================== */
+.video-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #444444;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.video-wrapper {
+  margin: 0 auto 20px;
+  max-width: 680px;
+  text-align: center;
+}
+
+.video-link {
+  display: block;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.video-link:hover {
+  transform: scale(1.005);
+}
+
+.video-thumbnail-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+}
+
+.video-caption {
+  font-size: 13px;
+  font-weight: 700;
+  color: #222222;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   DIVIDER
+   ========================================== */
+.divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 22px 0 24px 0;
+}
+
+/* ==========================================
+   GREEN CTA BUTTON
+   ========================================== */
+.cta-container {
+  margin: 20px 0 26px 0;
+  text-align: center;
+}
+
+.green-cta-btn {
+  display: block;
+  width: 100%;
+  background-color: #168c46;
+  color: #ffffff !important;
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  padding: 13px 16px;
+  border-radius: 4px;
+  text-decoration: none !important;
+  line-height: 1.3;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 6px rgba(22, 140, 70, 0.25);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .green-cta-btn {
+    font-size: 23px;
+    padding: 15px 22px;
+  }
+}
+
+.green-cta-btn:hover {
+  background-color: #12753a;
+  box-shadow: 0 5px 12px rgba(18, 117, 58, 0.35);
+  text-decoration: none !important;
+}
+
+/* ==========================================
+   ARTICLE BODY CONTENT
+   ========================================== */
+.article-body {
+  font-size: 17px;
+  line-height: 1.62;
+  color: #333333;
+}
+
+@media (min-width: 768px) {
+  .article-body {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+}
+
+.article-body p {
+  margin: 0 0 18px 0;
+}
+
+.article-body strong {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.removal-heading {
+  font-size: 19px;
+  font-weight: 700;
+  color: #333333;
+  text-decoration: underline;
+  margin-top: 28px;
+  margin-bottom: 18px;
   line-height: 1.3;
 }
 
-/* ==========================================
-   STORY SECTIONS
-   Reference: background-color: rgb(255, 248, 255)
-   padding: padding20H / padding40H
-   ========================================== */
-.section-story {
-  background-color: rgb(255, 248, 255);
-  /* containerInner 20px + col padding 15px each = 35px, section padding 20px top/bottom */
-  padding: 20px 15px;
+@media (min-width: 768px) {
+  .removal-heading {
+    font-size: 20px;
+  }
 }
 
 /* ==========================================
-   BODY TEXT
-   Reference: font-size: 20px, left aligned
+   TRUST BADGES BAR
+   Matches publisher logos in reference image
    ========================================== */
-.section-story p,
-.section-closing p {
-  font-family: "Oxygen", Helvetica, sans-serif;
-  font-size: 18px;
-  color: #2d2d2d;
-  line-height: 1.58;
-  text-align: left;
-  margin-bottom: 20px;
+.trust-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 10px 15px;
+  margin-top: 35px;
+  border-top: 1px solid #eaeaea;
 }
 
-/* Reference: font-size: 12px, italic, bold */
-.byline {
-  font-size: 12px !important;
-  color: #2d2d2d;
-  margin-bottom: 14px !important;
-  line-height: 1.4;
-}
-
-/* Reference: font-size: 28px, color: rgb(10,134,59), Rock Salt, italic */
-.signature-name {
-  font-family: "Rock Salt", cursive !important;
-  font-size: 28px !important;
-  color: rgb(10, 134, 59) !important;
-  font-style: italic;
-  margin-top: 15px;
-  margin-bottom: 0;
-  line-height: 1.5;
-}
-
-/* Reference: inline link color */
-.inline-link {
-  color: rgb(22, 70, 142);
-  text-decoration: underline;
-}
-
-/* ==========================================
-   TWO-COLUMN LAYOUT (Bootstrap .row + .col-md-6)
-   col-md-6 = 50% with 15px gutters each side
-   ========================================== */
-.two-col {
-  margin-left: 0;
-  margin-right: 0;
+.trust-badges-row {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.col-text,
-.col-photo {
-  position: relative;
-  min-height: 1px;
-  padding-left: 0;
-  padding-right: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 25px 40px;
   width: 100%;
-  flex: 0 0 100%;
 }
 
-.col-photo {
-  margin-bottom: 24px;
+.badge-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
-/* ==========================================
-   PHOTO BLOCKS
-   Reference: width="250"
-   ========================================== */
-.photo-block {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.photo-block img {
-  width: 200px;
+.badge-item svg {
   max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  height: auto;
   display: block;
 }
 
-/* Reference: font-size: 18px, centered */
-.photo-block figcaption {
-  margin-top: 30px;
-  font-family: "Oxygen", Helvetica, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  color: #2d2d2d;
-  text-align: center;
-}
-
-/* ==========================================
-   CLOSING SECTION
-   ========================================== */
-.section-closing {
-  background-color: rgb(255, 248, 255);
-  padding: 0 15px 20px;
-}
-
-/* ==========================================
-   CTA BUTTON SECTION
-   Reference: background: rgb(2,175,239), color: #000
-   font-size: 28px, full width, radius 3
-   margin-top: 30px
-   ========================================== */
-.section-cta {
-  background-color: rgb(255, 248, 255);
-  /* Minimal horizontal padding so button fits on one line at 1120px container */
-  padding: 0 15px 40px;
-}
-
-.cta-button {
-  display: block;
-  width: 100%;
-  padding: 12px 15px;
-  border-radius: 3px;
-  margin-top: 30px;
-  background: #4db39c;
-  color: rgb(0, 0, 0);
-  font-family: "Oxygen", Helvetica, sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.4;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: background 150ms ease;
-  overflow-wrap: anywhere;
-}
-
-.cta-button:hover,
-.cta-button:focus {
-  background: #3c9c87;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-}
 
 /* ==========================================
    FOOTER
-   Reference: background-color: rgb(204, 234, 252)
-   padding: 25px top, 100px bottom (paddingBottomBig)
-   60% width row centered
+   Exact match to existing footer specs
    ========================================== */
 .site-footer {
   background-color: #94FFE7;
-  padding: 20px 15px 60px;
+  padding: 25px 20px 50px;
+  margin-top: auto;
 }
 
 .footer-inner {
   width: 100%;
-  max-width: 100%;
+  max-width: 680px;
   margin: 0 auto;
   text-align: center;
 }
 
-/* Reference: font-size: 12px, color: rgb(45,45,45) */
 .site-footer p {
-  font-family: "Oxygen", Helvetica, sans-serif;
+  font-family: "Oxygen", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 12px;
   color: rgb(45, 45, 45);
-  margin: 0 auto 6px;
+  margin: 0 auto 8px;
   line-height: 1.5;
   text-align: center;
 }
@@ -298,305 +302,7 @@ figure {
   text-decoration: underline;
 }
 
-/* ── Footer nav pill buttons ── */
-.footer-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin: 10px 0 12px;
-}
-
-.footer-btn {
-  display: inline-block;
-  font-family: "Oxygen", Helvetica, sans-serif;
-  font-size: 12px;
-  color: rgb(45, 45, 45);
-  background-color: rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 20px;
-  padding: 5px 14px;
+.site-footer a:hover {
   text-decoration: none;
-  transition: background-color 0.18s ease;
-}
-
-.footer-btn:hover {
-  background-color: rgba(0, 0, 0, 0.12);
-  text-decoration: none;
-}
-
-
-/* ==========================================
-   RESPONSIVE
-   ========================================== */
-/* Mobile (Default) */
-/* 0px - 767px */
-
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .page-wrapper {
-    max-width: 100%;
-  }
-
-  .section-header {
-    padding: 20px 20px;
-  }
-
-  .section-header .inner-header {
-    padding: 20px 20px;
-  }
-
-  .section-header h1 {
-    font-size: 36px;
-  }
-
-  .section-header .subheadline {
-    font-size: 21px;
-  }
-
-  .section-story,
-  .section-closing,
-  .section-cta {
-    padding-left: 25px;
-    padding-right: 25px;
-  }
-
-  .section-story p,
-  .section-closing p {
-    font-size: 19px;
-    line-height: 1.62;
-  }
-
-  .two-col {
-    flex-direction: row;
-    margin-left: -12px;
-    margin-right: -12px;
-  }
-
-  .col-text,
-  .col-photo {
-    width: 50%;
-    flex: 0 0 50%;
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
-  .col-photo {
-    margin-bottom: 0;
-  }
-
-  .photo-block img {
-    width: 230px;
-  }
-
-  .cta-button {
-    font-size: 24px;
-    padding: 12px 20px;
-  }
-
-  .site-footer {
-    padding: 25px 25px 80px;
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  .page-wrapper {
-    /* Reference wideContainer exact value */
-    max-width: 1120px;
-  }
-
-  .section-header {
-    padding: 20px 0;
-  }
-
-  .section-header .inner-header {
-    padding: 20px 30px;
-  }
-
-  .section-header h1 {
-    font-size: 46px;
-    line-height: 1.4;
-  }
-
-  .section-header .subheadline {
-    font-size: 23px;
-  }
-
-  .section-story {
-    padding: 20px 35px;
-  }
-
-  .section-story p,
-  .section-closing p {
-    font-size: 20px;
-    line-height: 1.65;
-  }
-
-  .two-col {
-    flex-direction: row;
-    margin-left: -15px;
-    margin-right: -15px;
-  }
-
-  .col-text,
-  .col-photo {
-    width: 50%;
-    flex: 0 0 50%;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  .col-photo {
-    margin-bottom: 0;
-  }
-
-  .photo-block img {
-    width: 250px;
-  }
-
-  .section-closing {
-    padding: 0 35px 20px;
-  }
-
-  .section-cta {
-    padding: 0 35px 40px;
-  }
-
-  .cta-button {
-    font-size: 28px;
-    padding: 10px 25px;
-  }
-
-  .site-footer {
-    padding: 25px 40px 100px;
-  }
-
-  .footer-inner {
-    width: 60%;
-  }
-}
-
-/* Subpages Container styling (Legal pages) */
-.legal-main {
-  max-width: 850px;
-  margin: 40px auto;
-  background: #ffffff;
-  padding: 40px;
-  border: 1px solid #e2e8f0;
-}
-
-.legal-title {
-  font-family: var(--font-title, 'Poppins', sans-serif);
-  font-size: 2.2rem;
-  color: #183059;
-  margin-bottom: 15px;
-}
-
-.legal-date {
-  font-size: 0.9rem;
-  color: #555555;
-  margin-bottom: 30px;
-}
-
-.legal-section-title {
-  font-family: var(--font-title, 'Poppins', sans-serif);
-  font-size: 1.3rem;
-  color: #183059;
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-.legal-text {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  color: #333333;
-}
-
-.legal-list {
-  margin-bottom: 20px;
-  padding-left: 20px;
-}
-
-.legal-list-item {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-  color: #333333;
-}
-
-.legal-back-home {
-  display: inline-block;
-  margin-top: 30px;
-  color: #0066cc;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.legal-back-home:hover {
-  text-decoration: underline;
-}
-
-/* Contact Form Styles */
-.contact-form {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: left;
-}
-
-.form-label {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #183059;
-}
-
-.form-input,
-.form-textarea {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 1rem;
-  color: #000000;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  background-color: #ffffff;
-}
-
-.form-input:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: #0076df;
-  box-shadow: 0 0 0 3px rgba(0, 118, 223, 0.15);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 150px;
-}
-
-.form-submit-btn {
-  align-self: flex-start;
-  background-color: #0076df;
-  color: #ffffff;
-  padding: 14px 30px;
-  font-size: 1rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  text-transform: uppercase;
-}
-
-.form-submit-btn:hover {
-  background-color: #005eb3;
 }
 
