@@ -278,12 +278,12 @@ a {
 
 /* ==========================================
    FOOTER
-   Exact match to existing footer specs
    ========================================== */
 .site-footer {
-  background-color: #94FFE7;
+  background-color: #ffffff;
   padding: 25px 20px 50px;
   margin-top: auto;
+  border-top: 1px solid #eaeaea;
 }
 
 .footer-inner {
