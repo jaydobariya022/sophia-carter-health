@@ -277,6 +277,42 @@ a {
 }
 
 /* ==========================================
+   TRUST BADGES BAR
+   Matches publisher logos in reference image
+   ========================================== */
+.trust-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 10px 15px;
+  margin-top: 35px;
+  border-top: 1px solid #eaeaea;
+}
+
+.trust-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 25px 40px;
+  width: 100%;
+}
+
+.badge-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.badge-item svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================
    FOOTER
    ========================================== */
 .site-footer {
