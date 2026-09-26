@@ -156,41 +156,83 @@ a {
 }
 
 /* ==========================================
-   GREEN CTA BUTTON
+   YELLOW CTA BUTTON WITH BLUE SKETCH RING
    ========================================== */
 .cta-container {
-  margin: 20px 0 26px 0;
+  margin: 35px 0 45px 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.green-cta-btn {
-  display: block;
-  width: 100%;
-  background-color: #168c46;
-  color: #ffffff !important;
-  font-size: 19px;
-  font-weight: 700;
-  text-align: center;
-  padding: 13px 16px;
-  border-radius: 4px;
+.yellow-cta-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 12px 20px;
   text-decoration: none !important;
-  line-height: 1.3;
-  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-  box-shadow: 0 3px 6px rgba(22, 140, 70, 0.25);
+  max-width: 100%;
+  transition: transform 0.2s ease;
   cursor: pointer;
+  box-sizing: border-box;
+}
+
+.yellow-cta-wrapper:hover {
+  transform: scale(1.03);
+}
+
+.blue-circle-svg {
+  position: absolute;
+  top: -12px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 24px);
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+  display: block;
+}
+
+.yellow-cta-btn {
+  display: inline-block;
+  background: #ffee00;
+  background: linear-gradient(180deg, #ffee33 0%, #ffd000 100%);
+  color: #000000 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Arial Narrow", "Segoe UI", Roboto, sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  text-align: center;
+  padding: 14px 28px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border: 1px solid #e5bd00;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+  position: relative;
+  z-index: 1;
+  white-space: normal;
+  word-break: break-word;
 }
 
 @media (min-width: 768px) {
-  .green-cta-btn {
-    font-size: 23px;
-    padding: 15px 22px;
+  .yellow-cta-wrapper {
+    padding: 16px 30px;
   }
-}
 
-.green-cta-btn:hover {
-  background-color: #12753a;
-  box-shadow: 0 5px 12px rgba(18, 117, 58, 0.35);
-  text-decoration: none !important;
+  .blue-circle-svg {
+    top: -16px;
+    left: -28px;
+    width: calc(100% + 56px);
+    height: calc(100% + 32px);
+  }
+
+  .yellow-cta-btn {
+    font-size: 24px;
+    padding: 16px 44px;
+  }
 }
 
 /* ==========================================
@@ -270,15 +312,14 @@ a {
   display: block;
 }
 
-
 /* ==========================================
    FOOTER
-   Exact match to existing footer specs
    ========================================== */
 .site-footer {
-  background-color: #94FFE7;
+  background-color: #ffffff;
   padding: 25px 20px 50px;
   margin-top: auto;
+  border-top: 1px solid #eaeaea;
 }
 
 .footer-inner {
