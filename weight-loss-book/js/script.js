@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Trigger PDF File Download automatically
-    var pdfPath = 'assets/images/The-7-Minute-Weight-Loss-Reset.pdf';
+    var pdfPath = '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf';
     var link = document.createElement('a');
     link.href = pdfPath;
     link.download = 'The-7-Minute-Weight-Loss-Reset.pdf';
