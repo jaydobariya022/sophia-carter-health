@@ -1,0 +1,470 @@
+/* ==========================================
+   RESET & BASE
+   ========================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background-color: #f4f4f6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==========================================
+   PAGE WRAPPER
+   Center aligned card layout (max-width ~760px)
+   ========================================== */
+.page-wrapper {
+  margin: 0 auto;
+  max-width: 760px;
+  width: 100%;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.06);
+}
+
+.main-content {
+  padding: 30px 20px 10px;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding: 40px 45px 20px;
+  }
+}
+
+/* ==========================================
+   HEADER TITLE & SUBTITLE
+   ========================================== */
+.main-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #333333;
+  text-align: center;
+  line-height: 1.25;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.3px;
+}
+
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 28px;
+  }
+}
+
+.main-subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #555555;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0 0 20px 0;
+}
+
+@media (min-width: 768px) {
+  .main-subtitle {
+    font-size: 17px;
+  }
+}
+
+/* ==========================================
+   VIDEO LABEL & THUMBNAIL
+   ========================================== */
+.video-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #444444;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.video-wrapper {
+  margin: 0 auto 20px;
+  max-width: 680px;
+  text-align: center;
+}
+
+.video-link {
+  display: block;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.video-link:hover {
+  transform: scale(1.005);
+}
+
+.video-thumbnail-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+}
+
+.video-caption {
+  font-size: 13px;
+  font-weight: 700;
+  color: #222222;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   DIVIDER
+   ========================================== */
+.divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 22px 0 24px 0;
+}
+
+/* ==========================================
+   YELLOW CTA BUTTON WITH BLUE SKETCH RING
+   ========================================== */
+.cta-container {
+  margin: 35px 0 45px 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.yellow-cta-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 12px 20px;
+  text-decoration: none !important;
+  max-width: 100%;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.yellow-cta-wrapper:hover {
+  transform: scale(1.03);
+}
+
+.blue-circle-svg {
+  position: absolute;
+  top: -12px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 24px);
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+  display: block;
+}
+
+.yellow-cta-btn {
+  display: inline-block;
+  background: #ffee00;
+  background: linear-gradient(180deg, #ffee33 0%, #ffd000 100%);
+  color: #000000 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Arial Narrow", "Segoe UI", Roboto, sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  text-align: center;
+  padding: 14px 28px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border: 1px solid #e5bd00;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+  position: relative;
+  z-index: 1;
+  white-space: normal;
+  word-break: break-word;
+}
+
+@media (min-width: 768px) {
+  .yellow-cta-wrapper {
+    padding: 16px 30px;
+  }
+
+  .blue-circle-svg {
+    top: -16px;
+    left: -28px;
+    width: calc(100% + 56px);
+    height: calc(100% + 32px);
+  }
+
+  .yellow-cta-btn {
+    font-size: 24px;
+    padding: 16px 44px;
+  }
+}
+
+/* ==========================================
+   ARTICLE BODY CONTENT
+   ========================================== */
+.article-body {
+  font-size: 17px;
+  line-height: 1.62;
+  color: #333333;
+}
+
+@media (min-width: 768px) {
+  .article-body {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+}
+
+.article-body p {
+  margin: 0 0 18px 0;
+}
+
+.article-body strong {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.removal-heading {
+  font-size: 19px;
+  font-weight: 700;
+  color: #333333;
+  text-decoration: underline;
+  margin-top: 28px;
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  .removal-heading {
+    font-size: 20px;
+  }
+}
+
+/* ==========================================
+   TRUST BADGES BAR
+   ========================================== */
+.trust-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 10px 15px;
+  margin-top: 35px;
+  border-top: 1px solid #eaeaea;
+}
+
+.trust-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 25px 40px;
+  width: 100%;
+}
+
+.badge-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.badge-item svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.site-footer {
+  background-color: #ffffff;
+  padding: 25px 20px 50px;
+  margin-top: auto;
+  border-top: 1px solid #eaeaea;
+}
+
+.footer-inner {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-footer p {
+  font-family: "Oxygen", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  color: rgb(45, 45, 45);
+  margin: 0 auto 8px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.site-footer a {
+  color: rgb(45, 45, 45);
+  text-decoration: underline;
+}
+
+.site-footer a:hover {
+  text-decoration: none;
+}
+
+/* ==========================================
+   LEGAL PAGES STYLING
+   ========================================== */
+.legal-main {
+  max-width: 850px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 40px;
+  border: 1px solid #e2e8f0;
+}
+
+.legal-title {
+  font-family: "Inter", sans-serif;
+  font-size: 2.2rem;
+  color: #333333;
+  margin-bottom: 15px;
+}
+
+.legal-date {
+  font-size: 0.9rem;
+  color: #555555;
+  margin-bottom: 30px;
+}
+
+.legal-section-title {
+  font-family: "Inter", sans-serif;
+  font-size: 1.3rem;
+  color: #333333;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.legal-text {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.legal-list {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.legal-list-item {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #333333;
+}
+
+.legal-back-home {
+  display: inline-block;
+  margin-top: 30px;
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.legal-back-home:hover {
+  text-decoration: underline;
+}
+
+/* Contact Form Styles */
+.contact-form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.form-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #333333;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #ffffff;
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.form-submit-btn {
+  align-self: flex-start;
+  background-color: #0066cc;
+  color: #ffffff;
+  padding: 14px 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-transform: uppercase;
+}
+
+.form-submit-btn:hover {
+  background-color: #005eb3;
+}
