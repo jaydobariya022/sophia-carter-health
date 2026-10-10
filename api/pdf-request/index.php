@@ -135,8 +135,13 @@ if ($config['brevo_api_key'] && $config['brevo_api_key'] !== 'YOUR_BREVO_API_KEY
         ],
         CURLOPT_POSTFIELDS => json_encode($contactPayload)
     ]);
-    curl_exec($ch);
+    $contactResponse = curl_exec($ch);
+    $contactHttpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
+
+    if ($contactHttpCode >= 400) {
+        @file_put_contents(__DIR__ . '/../../data/brevo_error.log', date('Y-m-d H:i:s') . " [Contact Error {$contactHttpCode}]: " . $contactResponse . "\n", FILE_APPEND);
+    }
 
     // B. Send Transactional Email
     $emailPayload = [
@@ -173,8 +178,13 @@ if ($config['brevo_api_key'] && $config['brevo_api_key'] !== 'YOUR_BREVO_API_KEY
         ],
         CURLOPT_POSTFIELDS => json_encode($emailPayload)
     ]);
-    curl_exec($ch2);
+    $emailResponse = curl_exec($ch2);
+    $emailHttpCode = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
     curl_close($ch2);
+
+    if ($emailHttpCode >= 400) {
+        @file_put_contents(__DIR__ . '/../../data/brevo_error.log', date('Y-m-d H:i:s') . " [Email Error {$emailHttpCode}]: " . $emailResponse . "\n", FILE_APPEND);
+    }
 }
 
 // ── 6. Return Success Response ───────────────────────────────────────────────
