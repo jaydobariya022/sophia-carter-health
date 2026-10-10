@@ -52,7 +52,12 @@ document.addEventListener('DOMContentLoaded', function () {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     })
-      .then(function (res) { return res.json(); })
+      .then(function (res) {
+        if (!res.ok) {
+          throw new Error('API server returned status ' + res.status);
+        }
+        return res.json();
+      })
       .then(function (data) {
         if (submitBtn) {
           submitBtn.disabled = false;
@@ -93,11 +98,38 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.removeChild(link);
       })
       .catch(function (err) {
+        console.warn('[PDF Download Fallback Activated]', err);
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'GET INSTANT ACCESS NOW';
         }
-        alert('Network connection error. Please try again.');
+
+        // Fire Meta Pixel Lead Event
+        if (typeof fbq === 'function') {
+          try {
+            fbq('track', 'Lead', {
+              content_name: '7-Minute Weight Loss Reset EBook',
+              category: 'Free Download'
+            });
+          } catch (err) { }
+        }
+
+        // Fallback: Show success box & trigger direct PDF download gracefully
+        var formCard = formElement.closest('.lead-form-card');
+        var successBox = document.getElementById(successBoxId);
+
+        if (formCard && successBox) {
+          formElement.style.display = 'none';
+          successBox.style.display = 'block';
+        }
+
+        var pdfUrl = '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf';
+        var link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'The-7-Minute-Weight-Loss-Reset.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       });
   }
 

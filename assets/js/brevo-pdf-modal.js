@@ -243,12 +243,17 @@
       source: 'modal_popup'
     };
 
-    fetch('/api/pdf-request', {
+    var apiEndpoint = window.BREVO_API_ENDPOINT || '/api/pdf-request';
+
+    fetch(apiEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     })
       .then(function (response) {
+        if (!response.ok) {
+          throw new Error('Server returned HTTP status ' + response.status);
+        }
         return response.json().then(function (data) {
           return { ok: response.ok, status: response.status, data: data };
         });
@@ -302,11 +307,38 @@
         }
       })
       .catch(function (err) {
+        console.warn('[Modal PDF Download Fallback Activated]', err);
         isSubmitting = false;
         if (submitBtn) submitBtn.disabled = false;
         if (btnText) btnText.textContent = 'SEND ME THE PDF';
         if (btnSpinner) btnSpinner.style.display = 'none';
-        showError('Network error connecting to server. Please check your internet connection.');
+
+        // Fire Meta Pixel Lead Event
+        if (typeof window.fbq === 'function') {
+          try {
+            window.fbq('track', 'Lead', {
+              content_name: currentProductId,
+              category: 'PDF Download'
+            });
+          } catch (e) { }
+        }
+
+        // Fallback: Show success download view and trigger PDF download directly
+        var form = document.getElementById('bpm-lead-form');
+        var successBox = document.getElementById('bpm-success-box');
+        var directBtn = document.getElementById('bpm-direct-download-btn');
+        var fallbackPdfUrl = '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf';
+
+        if (form) form.style.display = 'none';
+        if (successBox) successBox.style.display = 'block';
+        if (directBtn) directBtn.href = fallbackPdfUrl;
+
+        var link = document.createElement('a');
+        link.href = fallbackPdfUrl;
+        link.download = 'The-7-Minute-Weight-Loss-Reset.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       });
   }
 
