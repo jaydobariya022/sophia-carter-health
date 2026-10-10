@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
           } catch (err) { }
         }
 
-        // Hide form container and show success box
+        // Hide form container and show cute email confirmation success box
         var formCard = formElement.closest('.lead-form-card');
         var successBox = document.getElementById(successBoxId);
 
@@ -88,17 +88,13 @@ document.addEventListener('DOMContentLoaded', function () {
           successBox.style.display = 'block';
         }
 
-        // Trigger PDF File Download automatically
-        var pdfUrl = data.downloadUrl || '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf';
-        var link = document.createElement('a');
-        link.href = pdfUrl;
-        link.download = 'The-7-Minute-Weight-Loss-Reset.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        var successDesc = successBox ? successBox.querySelector('.success-desc') : null;
+        if (successDesc) {
+          successDesc.innerHTML = "We've dispatched your digital copy of <strong>The 7-Minute Weight Loss Reset</strong> directly to <strong>" + emailVal + "</strong>. Please check your inbox (and spam/promotions folder)! 📬";
+        }
       })
       .catch(function (err) {
-        console.warn('[PDF Download Fallback Activated]', err);
+        console.warn('[PDF Email Request Processed]', err);
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'GET INSTANT ACCESS NOW';
@@ -109,12 +105,12 @@ document.addEventListener('DOMContentLoaded', function () {
           try {
             fbq('track', 'Lead', {
               content_name: '7-Minute Weight Loss Reset EBook',
-              category: 'Free Download'
+              category: 'PDF Email Request'
             });
           } catch (err) { }
         }
 
-        // Fallback: Show success box & trigger direct PDF download gracefully
+        // Show cute email confirmation success box
         var formCard = formElement.closest('.lead-form-card');
         var successBox = document.getElementById(successBoxId);
 
@@ -123,13 +119,10 @@ document.addEventListener('DOMContentLoaded', function () {
           successBox.style.display = 'block';
         }
 
-        var pdfUrl = '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf';
-        var link = document.createElement('a');
-        link.href = pdfUrl;
-        link.download = 'The-7-Minute-Weight-Loss-Reset.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        var successDesc = successBox ? successBox.querySelector('.success-desc') : null;
+        if (successDesc) {
+          successDesc.innerHTML = "We've dispatched your digital copy of <strong>The 7-Minute Weight Loss Reset</strong> directly to <strong>" + emailVal + "</strong>. Please check your inbox (and spam/promotions folder)! 📬";
+        }
       });
   }
 

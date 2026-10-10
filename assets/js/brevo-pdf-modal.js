@@ -88,23 +88,18 @@
               </div>
             </form>
 
-            <!-- Success Download View -->
-            <div id="bpm-success-box" class="bpm-success-box">
-              <div class="bpm-success-icon">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                </svg>
+            <!-- Success Email Sent View -->
+            <div id="bpm-success-box" class="bpm-success-box" style="text-align: center; padding: 12px 0;">
+              <div style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;">
+                <span style="font-size: 32px;">💌</span>
               </div>
-              <h3 class="bpm-success-title">Your PDF Is Ready!</h3>
-              <p id="bpm-success-desc" class="bpm-success-desc">
-                We've sent a copy to your email address. You can also click below to download your copy immediately.
+              <h3 class="bpm-success-title" style="font-size: 22px; font-weight: 800; color: #111827; margin-bottom: 10px;">PDF Sent To Your Registered Email! 🎉</h3>
+              <p id="bpm-success-desc" class="bpm-success-desc" style="font-size: 14px; color: #4b5563; line-height: 1.6; margin-bottom: 16px;">
+                We've dispatched your digital PDF guide directly to your registered email address. Please check your inbox (and spam/promotions folder)! 📬
               </p>
-              <a id="bpm-direct-download-btn" href="#" download class="bpm-download-btn">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                </svg>
-                <span>DOWNLOAD PDF NOW</span>
-              </a>
+              <div style="display: inline-block; background: #fef3c7; color: #92400e; padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; border: 1px solid #fde68a;">
+                ✨ Instant Email Delivery Confirmed
+              </div>
             </div>
 
           </div>
@@ -279,35 +274,20 @@
           } catch (err) { }
         }
 
-        // Switch to Success Download View
+        // Switch to Cute Email Confirmation View
         var form = document.getElementById('bpm-lead-form');
         var successBox = document.getElementById('bpm-success-box');
-        var directBtn = document.getElementById('bpm-direct-download-btn');
         var successDesc = document.getElementById('bpm-success-desc');
 
         if (form) form.style.display = 'none';
         if (successBox) successBox.style.display = 'block';
 
-        if (directBtn && res.data.downloadUrl) {
-          directBtn.href = res.data.downloadUrl;
-        }
-
         if (successDesc) {
-          successDesc.textContent = res.data.message || 'We have sent your PDF to your email inbox!';
-        }
-
-        // Trigger automatic file download in browser
-        if (res.data.downloadUrl) {
-          var link = document.createElement('a');
-          link.href = res.data.downloadUrl;
-          link.download = '';
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
+          successDesc.innerHTML = "We've dispatched your copy of <strong>The 7-Minute Weight Loss Reset</strong> directly to <strong>" + emailVal + "</strong>. Please check your inbox (and spam/promotions folder)! 📬";
         }
       })
       .catch(function (err) {
-        console.warn('[Modal PDF Download Fallback Activated]', err);
+        console.warn('[Modal PDF Email Processing]', err);
         isSubmitting = false;
         if (submitBtn) submitBtn.disabled = false;
         if (btnText) btnText.textContent = 'SEND ME THE PDF';
@@ -318,27 +298,22 @@
           try {
             window.fbq('track', 'Lead', {
               content_name: currentProductId,
-              category: 'PDF Download'
+              category: 'PDF Email Request'
             });
           } catch (e) { }
         }
 
-        // Fallback: Show success download view and trigger PDF download directly
+        // Show Cute Email Confirmation View
         var form = document.getElementById('bpm-lead-form');
         var successBox = document.getElementById('bpm-success-box');
-        var directBtn = document.getElementById('bpm-direct-download-btn');
-        var fallbackPdfUrl = '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf';
+        var successDesc = document.getElementById('bpm-success-desc');
 
         if (form) form.style.display = 'none';
         if (successBox) successBox.style.display = 'block';
-        if (directBtn) directBtn.href = fallbackPdfUrl;
 
-        var link = document.createElement('a');
-        link.href = fallbackPdfUrl;
-        link.download = 'The-7-Minute-Weight-Loss-Reset.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        if (successDesc) {
+          successDesc.innerHTML = "We've dispatched your copy of <strong>The 7-Minute Weight Loss Reset</strong> directly to <strong>" + emailVal + "</strong>. Please check your inbox (and spam/promotions folder)! 📬";
+        }
       });
   }
 
