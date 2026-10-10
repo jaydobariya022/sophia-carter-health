@@ -298,6 +298,33 @@ a {
   text-align: left;
 }
 
+.consent-checkbox-field {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  margin: 6px 0 12px 0 !important;
+  text-align: left !important;
+}
+
+.consent-checkbox-field input[type="checkbox"] {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  margin-top: 2px !important;
+  accent-color: #10b981 !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+}
+
+.consent-checkbox-field label {
+  font-size: 13px !important;
+  color: #475569 !important;
+  line-height: 1.4 !important;
+  cursor: pointer !important;
+  user-select: none !important;
+}
+
 .field-label {
   font-size: 13px;
   font-weight: 700;
