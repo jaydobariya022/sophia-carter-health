@@ -243,7 +243,7 @@
       source: 'modal_popup'
     };
 
-    var apiEndpoint = window.BREVO_API_ENDPOINT || '/api/pdf-request';
+    var apiEndpoint = window.BREVO_API_ENDPOINT || '/api/pdf-request/index.php';
 
     fetch(apiEndpoint, {
       method: 'POST',

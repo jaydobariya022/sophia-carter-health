@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
       source: 'weight_loss_landing_page'
     };
 
-    fetch('/api/pdf-request', {
+    fetch('/api/pdf-request/index.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
