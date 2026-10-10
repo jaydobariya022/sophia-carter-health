@@ -1,0 +1,362 @@
+/* ==========================================================================
+   Sophia Carter Health - Brevo Lead Capture & PDF Delivery Modal Styles
+   ========================================================================== */
+
+/* Modal Overlay & Backdrop */
+.bpm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+}
+
+.bpm-overlay.bpm-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Dialog Box */
+.bpm-dialog {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bpm-overlay.bpm-active .bpm-dialog {
+  transform: translateY(0) scale(1);
+}
+
+/* Header Banner */
+.bpm-header {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  color: #ffffff;
+  padding: 24px 24px 20px 24px;
+  text-align: center;
+  position: relative;
+}
+
+.bpm-header-badge {
+  display: inline-block;
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+}
+
+.bpm-title {
+  font-family: 'Inter', 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+}
+
+.bpm-description {
+  font-family: 'Inter', 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Close Button */
+.bpm-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #d1d5db;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.bpm-close-btn:hover,
+.bpm-close-btn:focus {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  outline: none;
+}
+
+.bpm-close-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Body Content */
+.bpm-body {
+  padding: 24px;
+}
+
+/* Validation Alert */
+.bpm-error-alert {
+  display: none;
+  background-color: #fef2f2;
+  border-left: 4px solid #ef4444;
+  color: #991b1b;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+/* Form Styles */
+.bpm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bpm-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bpm-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.bpm-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bpm-input-icon {
+  position: absolute;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.bpm-input {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #111827;
+  background-color: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-sizing: border-box;
+}
+
+.bpm-input:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+/* Checkbox field */
+.bpm-consent-group {
+  margin-top: 4px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.bpm-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: #f59e0b;
+  cursor: pointer;
+}
+
+.bpm-consent-label {
+  font-size: 12px;
+  color: #4b5563;
+  line-height: 1.4;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bpm-consent-label a {
+  color: #d97706;
+  text-decoration: underline;
+}
+
+/* Submit Button */
+.bpm-submit-btn {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #111827;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  width: 100%;
+}
+
+.bpm-submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
+}
+
+.bpm-submit-btn:active {
+  transform: translateY(0);
+}
+
+.bpm-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spinner Icon */
+.bpm-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(17, 24, 39, 0.2);
+  border-top-color: #111827;
+  border-radius: 50%;
+  animation: bpmSpin 0.7s linear infinite;
+}
+
+@keyframes bpmSpin {
+  to { transform: rotate(3600deg); }
+}
+
+/* Security Note */
+.bpm-security-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.bpm-security-note svg {
+  width: 14px;
+  height: 14px;
+  color: #10b981;
+}
+
+/* Success View Box */
+.bpm-success-box {
+  display: none;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.bpm-success-icon {
+  width: 56px;
+  height: 56px;
+  background: #dcfce7;
+  color: #16a34a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+}
+
+.bpm-success-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.bpm-success-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 8px 0;
+}
+
+.bpm-success-desc {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.bpm-download-btn {
+  background-color: #111827;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.25);
+  transition: background 0.2s ease, transform 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bpm-download-btn:hover {
+  background-color: #1f2937;
+  transform: translateY(-1px);
+}
+
+/* Responsive Fixes */
+@media (max-width: 480px) {
+  .bpm-dialog {
+    border-radius: 16px;
+  }
+  .bpm-header {
+    padding: 20px 18px 16px 18px;
+  }
+  .bpm-title {
+    font-size: 20px;
+  }
+  .bpm-body {
+    padding: 18px;
+  }
+}

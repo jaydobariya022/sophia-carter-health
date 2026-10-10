@@ -12,51 +12,93 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var nameInput = formElement.querySelector('input[name="full_name"]');
     var emailInput = formElement.querySelector('input[name="email"]');
+    var consentInput = formElement.querySelector('input[name="marketing_consent"]');
+    var submitBtn = formElement.querySelector('button[type="submit"]');
 
     var nameVal = nameInput ? nameInput.value.trim() : '';
     var emailVal = emailInput ? emailInput.value.trim() : '';
+    var consentVal = consentInput ? consentInput.checked : false;
 
     if (!nameVal || !emailVal) {
       alert('Please enter both your name and email address to claim your free book.');
       return;
     }
 
-    // Basic email format check
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(emailVal)) {
       alert('Please enter a valid email address.');
       return;
     }
 
-    // Fire Meta Pixel Lead Event (if Meta Pixel script is active)
-    if (typeof fbq === 'function') {
-      try {
-        fbq('track', 'Lead', {
-          content_name: '7-Minute Weight Loss Reset EBook',
-          category: 'Free Download'
-        });
-      } catch (err) {
-        console.log('Pixel track lead:', err);
+    // Set loading state
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      if (!submitBtn.getAttribute('data-original-text')) {
+        submitBtn.setAttribute('data-original-text', submitBtn.innerHTML);
       }
+      submitBtn.innerText = 'SENDING EMAIL & PREPARING PDF...';
     }
 
-    // Hide form container and show success box
-    var formCard = formElement.closest('.lead-form-card');
-    var successBox = document.getElementById(successBoxId);
+    var payload = {
+      full_name: nameVal,
+      email: emailVal,
+      product_id: 'weight-loss-reset',
+      marketing_consent: consentVal,
+      source: 'weight_loss_landing_page'
+    };
 
-    if (formCard && successBox) {
-      formCard.style.display = 'none';
-      successBox.style.display = 'block';
-    }
+    fetch('/api/pdf-request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'GET INSTANT ACCESS NOW';
+        }
 
-    // Trigger PDF File Download automatically
-    var pdfPath = '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf';
-    var link = document.createElement('a');
-    link.href = pdfPath;
-    link.download = 'The-7-Minute-Weight-Loss-Reset.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+        if (!data.success) {
+          alert(data.error || 'Failed to process request. Please try again.');
+          return;
+        }
+
+        // Fire Meta Pixel Lead Event
+        if (typeof fbq === 'function') {
+          try {
+            fbq('track', 'Lead', {
+              content_name: data.productName || '7-Minute Weight Loss Reset EBook',
+              category: 'Free Download'
+            });
+          } catch (err) { }
+        }
+
+        // Hide form container and show success box
+        var formCard = formElement.closest('.lead-form-card');
+        var successBox = document.getElementById(successBoxId);
+
+        if (formCard && successBox) {
+          formElement.style.display = 'none';
+          successBox.style.display = 'block';
+        }
+
+        // Trigger PDF File Download automatically
+        var pdfUrl = data.downloadUrl || '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf';
+        var link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'The-7-Minute-Weight-Loss-Reset.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+      .catch(function (err) {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'GET INSTANT ACCESS NOW';
+        }
+        alert('Network connection error. Please try again.');
+      });
   }
 
   // Attach submit handler to Hero Form
