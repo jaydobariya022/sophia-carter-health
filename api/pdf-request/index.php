@@ -16,12 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // ── 1. Configuration & Brevo API Setup ──────────────────────────────────────
+$localConfig = file_exists(__DIR__ . '/config.php') ? include(__DIR__ . '/config.php') : [];
+
 $config = [
-    'brevo_api_key' => getenv('BREVO_API_KEY') ?: 'YOUR_BREVO_API_KEY_HERE',
-    'sender_email' => getenv('BREVO_SENDER_EMAIL') ?: 'support@sophiacarterhealth.com',
-    'sender_name'  => getenv('BREVO_SENDER_NAME') ?: 'Sophia Carter Health',
-    'list_id'      => getenv('BREVO_CONTACT_LIST_ID') ? (int)getenv('BREVO_CONTACT_LIST_ID') : null,
-    'template_id'  => getenv('BREVO_PDF_TEMPLATE_ID') ? (int)getenv('BREVO_PDF_TEMPLATE_ID') : null,
+    'brevo_api_key' => getenv('BREVO_API_KEY') ?: ($localConfig['brevo_api_key'] ?? ''),
+    'sender_email' => getenv('BREVO_SENDER_EMAIL') ?: ($localConfig['sender_email'] ?? 'support@sophiacarterhealth.com'),
+    'sender_name'  => getenv('BREVO_SENDER_NAME') ?: ($localConfig['sender_name'] ?? 'Sophia Carter Health'),
+    'list_id'      => getenv('BREVO_CONTACT_LIST_ID') ? (int)getenv('BREVO_CONTACT_LIST_ID') : ($localConfig['list_id'] ?? null),
+    'template_id'  => getenv('BREVO_PDF_TEMPLATE_ID') ? (int)getenv('BREVO_PDF_TEMPLATE_ID') : ($localConfig['template_id'] ?? null),
 ];
 
 // Product Allowlist Catalog

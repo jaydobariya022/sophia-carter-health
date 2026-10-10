@@ -1,6 +1,7 @@
 # Environment & Secrets
 .env
 .env.local
+api/pdf-request/config.php
 
 # Database
 data/*.db
