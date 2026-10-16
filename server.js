@@ -99,8 +99,8 @@ const server = http.createServer(async (req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   const pathname = parsedUrl.pathname;
 
-  // ── API Endpoint: POST /api/pdf-request ────────────────────────────────────
-  if (req.method === 'POST' && pathname === '/api/pdf-request') {
+  // ── API Endpoint: POST /api/pdf-request or /api/pdf-request/index.php ────
+  if (req.method === 'POST' && (pathname === '/api/pdf-request' || pathname === '/api/pdf-request/index.php')) {
     if (isRateLimited(ip)) {
       res.writeHead(429, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ success: false, error: 'Too many requests. Please try again later.' }));

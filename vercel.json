@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/pdf-request/index.php",
+      "destination": "/api/pdf-request"
+    }
+  ]
+}

@@ -44,8 +44,8 @@ async function syncBrevoContact({ fullName, email, productId, productName, marke
     updateEnabled: true
   };
 
-  // Only add contact to marketing list if explicit marketing consent was granted and List ID is configured
-  if (marketingConsent && config.listId && !isNaN(config.listId)) {
+  // Add contact directly to configured Brevo list (e.g., List ID 7: Shophia Wellness Weight Loss)
+  if (config.listId && !isNaN(config.listId)) {
     payload.listIds = [config.listId];
   }
 

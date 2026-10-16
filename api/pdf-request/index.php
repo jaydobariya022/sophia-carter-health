@@ -120,7 +120,7 @@ if ($config['brevo_api_key'] && $config['brevo_api_key'] !== 'YOUR_BREVO_API_KEY
         ],
         'updateEnabled' => true
     ];
-    if ($marketingConsent && $config['list_id']) {
+    if (!empty($config['list_id'])) {
         $contactPayload['listIds'] = [(int)$config['list_id']];
     }
 
