@@ -11,10 +11,10 @@ const BREVO_API_BASE = 'https://api.brevo.com/v3';
 function getBrevoConfig() {
   return {
     apiKey: process.env.BREVO_API_KEY || '',
-    senderEmail: process.env.BREVO_SENDER_EMAIL || 'support@sophiacarterhealth.com',
-    senderName: process.env.BREVO_SENDER_NAME || 'Sophia Carter Health',
+    senderEmail: process.env.BREVO_SENDER_EMAIL || 'support.wellnesswithsophia@gmail.com',
+    senderName: process.env.BREVO_SENDER_NAME || 'Sophia Carter',
     templateId: process.env.BREVO_PDF_TEMPLATE_ID ? parseInt(process.env.BREVO_PDF_TEMPLATE_ID, 10) : null,
-    listId: process.env.BREVO_CONTACT_LIST_ID ? parseInt(process.env.BREVO_CONTACT_LIST_ID, 10) : null
+    listId: process.env.BREVO_CONTACT_LIST_ID ? parseInt(process.env.BREVO_CONTACT_LIST_ID, 10) : 7
   };
 }
 
