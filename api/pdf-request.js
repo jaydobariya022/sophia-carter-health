@@ -194,7 +194,7 @@ module.exports = async function handler(req, res) {
 
     const apiKey = process.env.BREVO_API_KEY;
     const listId = process.env.BREVO_CONTACT_LIST_ID ? parseInt(process.env.BREVO_CONTACT_LIST_ID, 10) : 7;
-    const senderEmail = process.env.BREVO_SENDER_EMAIL || 'support.wellnesswithsophia@gmail.com';
+    const senderEmail = process.env.BREVO_SENDER_EMAIL || 'support@wellnesswithsophia.cc';
     const senderName = process.env.BREVO_SENDER_NAME || 'Sophia Carter';
     const firstName = fullName.split(' ')[0] || fullName;
     const downloadUrl = 'https://wellnesswithsophia.cc/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf';

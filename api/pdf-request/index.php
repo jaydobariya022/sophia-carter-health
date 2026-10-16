@@ -20,7 +20,7 @@ $localConfig = file_exists(__DIR__ . '/config.php') ? include(__DIR__ . '/config
 
 $config = [
     'brevo_api_key' => getenv('BREVO_API_KEY') ?: ($localConfig['brevo_api_key'] ?? ''),
-    'sender_email' => getenv('BREVO_SENDER_EMAIL') ?: ($localConfig['sender_email'] ?? 'support.wellnesswithsophia@gmail.com'),
+    'sender_email' => getenv('BREVO_SENDER_EMAIL') ?: ($localConfig['sender_email'] ?? 'support@wellnesswithsophia.cc'),
     'sender_name'  => getenv('BREVO_SENDER_NAME') ?: ($localConfig['sender_name'] ?? 'Sophia Carter'),
     'list_id'      => getenv('BREVO_CONTACT_LIST_ID') ? (int)getenv('BREVO_CONTACT_LIST_ID') : ($localConfig['list_id'] ?? 7),
     'template_id'  => getenv('BREVO_PDF_TEMPLATE_ID') ? (int)getenv('BREVO_PDF_TEMPLATE_ID') : ($localConfig['template_id'] ?? null),
