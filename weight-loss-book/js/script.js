@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var nameVal = nameInput ? nameInput.value.trim() : '';
     var emailVal = emailInput ? emailInput.value.trim() : '';
-    var consentVal = consentInput ? consentInput.checked : false;
+    var consentVal = consentInput ? consentInput.checked : true;
 
     if (!nameVal || !emailVal) {
       alert('Please enter both your name and email address to claim your free book.');
@@ -131,14 +131,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (heroForm) {
     heroForm.addEventListener('submit', function (e) {
       processLeadDownload(e, heroForm, 'hero-download-success');
-    });
-  }
-
-  // Attach submit handler to Bottom Form
-  var bottomForm = document.getElementById('bottom-lead-form');
-  if (bottomForm) {
-    bottomForm.addEventListener('submit', function (e) {
-      processLeadDownload(e, bottomForm, 'bottom-download-success');
     });
   }
 });
