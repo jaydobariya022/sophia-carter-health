@@ -154,7 +154,29 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
+    let body = req.body;
+    if (!body) {
+      try {
+        const buffers = [];
+        for await (const chunk of req) {
+          buffers.push(chunk);
+        }
+        const raw = Buffer.concat(buffers).toString('utf-8');
+        if (raw) {
+          body = JSON.parse(raw);
+        }
+      } catch (e) {
+        body = {};
+      }
+    } else if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        body = {};
+      }
+    }
+    body = body || {};
+
     const fullName = String(body.full_name || '').trim();
     const email = String(body.email || '').trim().toLowerCase();
     const marketingConsent = Boolean(body.marketing_consent);
@@ -239,6 +261,6 @@ module.exports = async function handler(req, res) {
     });
   } catch (error) {
     console.error('[Vercel Handler Error]', error);
-    res.status(500).json({ success: false, error: 'Internal server error processing request.' });
+    res.status(500).json({ success: false, error: error.message || 'Internal server error processing request.' });
   }
 };
