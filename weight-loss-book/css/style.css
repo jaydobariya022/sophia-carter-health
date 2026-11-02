@@ -333,7 +333,7 @@ a {
 }
 
 .price-strikethrough del {
-  color: #ef4444;
+  color: #FBBF24;
   font-size: 16px;
   font-weight: 800;
   text-decoration: line-through;
