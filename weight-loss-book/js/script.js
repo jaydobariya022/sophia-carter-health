@@ -133,6 +133,69 @@ document.addEventListener('DOMContentLoaded', function () {
       processLeadDownload(e, heroForm, 'hero-download-success');
     });
   }
+
+  // ── 14-Hour Continuous Urgency Countdown Timer ──────────────────────────────
+  (function initUrgencyCountdown() {
+    var STORAGE_KEY = 'wlb_urgency_timer_target';
+    var DURATION_HOURS = 14;
+    var DURATION_MS = DURATION_HOURS * 60 * 60 * 1000;
+
+    var now = Date.now();
+    var storedTarget = null;
+
+    try {
+      storedTarget = localStorage.getItem(STORAGE_KEY);
+    } catch (e) {
+      storedTarget = null;
+    }
+
+    var targetTime;
+    if (!storedTarget || isNaN(storedTarget)) {
+      // First visit for this user / browser: start 14hr countdown
+      targetTime = now + DURATION_MS;
+      try {
+        localStorage.setItem(STORAGE_KEY, targetTime);
+      } catch (e) {}
+    } else {
+      targetTime = parseInt(storedTarget, 10);
+      // If already expired, restart fresh 14hr cycle
+      if (now >= targetTime) {
+        targetTime = now + DURATION_MS;
+        try {
+          localStorage.setItem(STORAGE_KEY, targetTime);
+        } catch (e) {}
+      }
+    }
+
+    var hoursEl = document.getElementById('cd-hours');
+    var minsEl = document.getElementById('cd-minutes');
+    var secsEl = document.getElementById('cd-seconds');
+
+    function tick() {
+      var currentTime = Date.now();
+      var remaining = targetTime - currentTime;
+
+      if (remaining <= 0) {
+        targetTime = Date.now() + DURATION_MS;
+        try {
+          localStorage.setItem(STORAGE_KEY, targetTime);
+        } catch (e) {}
+        remaining = DURATION_MS;
+      }
+
+      var totalSeconds = Math.max(0, Math.floor(remaining / 1000));
+      var hours = Math.floor(totalSeconds / 3600);
+      var minutes = Math.floor((totalSeconds % 3600) / 60);
+      var seconds = totalSeconds % 60;
+
+      if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+      if (minsEl) minsEl.textContent = String(minutes).padStart(2, '0');
+      if (secsEl) secsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
 });
 
 // ── Attribution param forwarding (preserves URL tracking) ────────────────────
