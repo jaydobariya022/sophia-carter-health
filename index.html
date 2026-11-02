@@ -63,6 +63,13 @@ margin-bottom:30px;
 color:#666;
 }
 
+.hero-buttons{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+align-items:center;
+}
+
 .btn{
 display:inline-block;
 background:#c9a77d;
@@ -76,6 +83,17 @@ transition:.3s;
 
 .btn:hover{
 transform:translateY(-3px);
+box-shadow:0 6px 18px rgba(201,167,125,.35);
+}
+
+.btn-ebook{
+background:#2f3a33;
+color:#ffffff;
+}
+
+.btn-ebook:hover{
+background:#1f2722;
+box-shadow:0 6px 18px rgba(47,58,51,.35);
 }
 
 .hero-image{
@@ -211,7 +229,19 @@ font-size:32px;
 font-size:34px;
 }
 
+.hero-buttons{
+justify-content:center;
 }
+
+}
+
+@media(max-width:480px){
+.hero-buttons{
+flex-direction:column;
+}
+}
+
+
 
 </style>
 </head>
@@ -237,9 +267,14 @@ and everyday habits designed to help women feel their
 best naturally.
 </p>
 
+<div class="hero-buttons">
 <a href="https://www.facebook.com/sophiacarterhealth" class="btn">
 Follow On Facebook →
 </a>
+<a href="https://wellnesswithsophia.cc/weight-loss-book" class="btn btn-ebook">
+Free E-Book (Limited Offer) →
+</a>
+</div>
 
 </div>
 
