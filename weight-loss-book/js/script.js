@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var payload = {
       full_name: nameVal,
       email: emailVal,
-      product_id: 'women-40-plus-bundle',
+      product_id: 'weight-loss-reset',
       marketing_consent: consentVal,
-      source: 'women_40_plus_landing_page'
+      source: 'weight_loss_landing_page'
     };
 
     fetch('/api/pdf-request/index.php', {

@@ -33,14 +33,20 @@ const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 const PRODUCT_CATALOG = {
   'weight-loss-reset': {
     id: 'weight-loss-reset',
-    name: 'The 7-Minute Weight Loss Reset',
-    pdfPath: '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf',
-    filename: 'The-7-Minute-Weight-Loss-Reset.pdf'
+    name: 'The Complete Women Over 40 Wellness & Weight Loss Bundle (3 Free E-Books)',
+    pdfPath: '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf',
+    filename: 'Why-the-Scale-Wont-Budge-After-40.pdf'
+  },
+  'women-40-plus-bundle': {
+    id: 'women-40-plus-bundle',
+    name: 'The Complete Women Over 40 Wellness & Weight Loss Bundle (3 Free E-Books)',
+    pdfPath: '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf',
+    filename: 'Why-the-Scale-Wont-Budge-After-40.pdf'
   },
   'womens-health-guide': {
     id: 'womens-health-guide',
     name: "Sophia's Women's Health & Wellness Guide",
-    pdfPath: '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf',
+    pdfPath: '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf',
     filename: 'Womens-Health-Guide.pdf'
   }
 };

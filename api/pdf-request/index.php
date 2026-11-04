@@ -18,6 +18,24 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // ── 1. Configuration & Brevo API Setup ──────────────────────────────────────
 $localConfig = file_exists(__DIR__ . '/config.php') ? include(__DIR__ . '/config.php') : [];
 
+// If not defined, also inspect root .env if present
+if (empty($localConfig['brevo_api_key']) && file_exists(__DIR__ . '/../../.env')) {
+    $envLines = @file(__DIR__ . '/../../.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
+    foreach ($envLines as $line) {
+        $trimmed = trim($line);
+        if ($trimmed === '' || $trimmed[0] === '#') continue;
+        if (strpos($line, '=') !== false) {
+            list($k, $v) = explode('=', $line, 2);
+            $k = trim($k);
+            $v = trim($v);
+            if (!getenv($k)) {
+                putenv("{$k}={$v}");
+                $_ENV[$k] = $v;
+            }
+        }
+    }
+}
+
 $config = [
     'brevo_api_key' => getenv('BREVO_API_KEY') ?: ($localConfig['brevo_api_key'] ?? ''),
     'sender_email' => getenv('BREVO_SENDER_EMAIL') ?: ($localConfig['sender_email'] ?? 'support@wellnesswithsophia.cc'),
@@ -34,14 +52,20 @@ $products = [
         'books' => [
             [
                 'name' => "Why the Scale Won't Budge After 40",
+                'subtitle' => "7 gentle, realistic habits that work with your changing body",
+                'image' => "/weight-loss-book/assets/images/book-why-scale-wont-budge.jpg",
                 'path' => '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf'
             ],
             [
                 'name' => "Sunday Prep, Easy Week",
+                'subtitle' => "Healthy meal prep & 12 simple morning drinks for women over 40",
+                'image' => "/weight-loss-book/assets/images/book-sunday-prep-easy-week.jpg",
                 'path' => '/weight-loss-book/assets/images/Sunday-Prep-Easy-Week.pdf'
             ],
             [
                 'name' => "The 7-Minute Weight Loss Reset",
+                'subtitle' => "Simple morning habits, smart food choices & daily rituals",
+                'image' => "/weight-loss-book/assets/images/book-7-minute-weight-loss-reset.jpg",
                 'path' => '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf'
             ]
         ]
@@ -52,14 +76,20 @@ $products = [
         'books' => [
             [
                 'name' => "Why the Scale Won't Budge After 40",
+                'subtitle' => "7 gentle, realistic habits that work with your changing body",
+                'image' => "/weight-loss-book/assets/images/book-why-scale-wont-budge.jpg",
                 'path' => '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf'
             ],
             [
                 'name' => "Sunday Prep, Easy Week",
+                'subtitle' => "Healthy meal prep & 12 simple morning drinks for women over 40",
+                'image' => "/weight-loss-book/assets/images/book-sunday-prep-easy-week.jpg",
                 'path' => '/weight-loss-book/assets/images/Sunday-Prep-Easy-Week.pdf'
             ],
             [
                 'name' => "The 7-Minute Weight Loss Reset",
+                'subtitle' => "Simple morning habits, smart food choices & daily rituals",
+                'image' => "/weight-loss-book/assets/images/book-7-minute-weight-loss-reset.jpg",
                 'path' => '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf'
             ]
         ]
@@ -193,24 +223,125 @@ if ($config['brevo_api_key'] && $config['brevo_api_key'] !== 'YOUR_BREVO_API_KEY
             'SUPPORT_EMAIL' => $config['sender_email']
         ];
     } else {
-        $emailPayload['subject'] = 'Your 3 Free E-Books Are Ready - ' . $product['name'];
+        $emailPayload['subject'] = '🎁 Your 3 Free E-Books Are Ready! (Instant PDF Download)';
         if (!empty($product['books'])) {
-            $booksHtml = '';
+            $booksCards = '';
             foreach ($product['books'] as $idx => $b) {
                 $bUrl = $protocol . '://' . $host . $b['path'];
+                $bImg = $protocol . '://' . $host . ($b['image'] ?? '');
                 $bNum = $idx + 1;
-                $booksHtml .= "<div style='margin:14px 0; padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px;'>
-                    <p style='margin:0 0 6px 0; font-size:15px; font-weight:bold; color:#0f172a;'>Book #{$bNum}: {$b['name']}</p>
-                    <a href='{$bUrl}' style='display:inline-block; background:#1b4332; color:#ffffff; padding:10px 20px; text-decoration:none; font-weight:bold; border-radius:6px; font-size:14px;'>📥 Download Book #{$bNum} (PDF)</a>
-                </div>";
+                $booksCards .= "
+                <table role='presentation' border='0' cellpadding='0' cellspacing='0' width='100%' style='background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;margin-bottom:18px;box-shadow:0 4px 10px rgba(0,0,0,0.04);'>
+                  <tr>
+                    <td style='padding:18px;'>
+                      <table role='presentation' border='0' cellpadding='0' cellspacing='0' width='100%'>
+                        <tr>
+                          <td width='100' valign='top' style='padding-right:16px;'>
+                            <a href='{$bUrl}' target='_blank'>
+                              <img src='{$bImg}' alt='{$b['name']}' width='100' style='display:block;border-radius:6px;width:100%;max-width:100px;height:auto;border:1px solid #e2e8f0;'>
+                            </a>
+                          </td>
+                          <td valign='middle'>
+                            <span style='display:inline-block;background:#fef3c7;color:#92400e;font-size:10px;font-weight:800;letter-spacing:1px;padding:3px 8px;border-radius:10px;text-transform:uppercase;margin-bottom:6px;'>
+                              Book #{$bNum}
+                            </span>
+                            <h3 style='margin:0 0 6px 0;color:#0f172a;font-size:16px;font-weight:800;'>
+                              {$b['name']}
+                            </h3>
+                            <p style='margin:0 0 12px 0;color:#64748b;font-size:13px;line-height:1.4;'>
+                              {$b['subtitle']}
+                            </p>
+                            <a href='{$bUrl}' target='_blank' style='display:inline-block;background:#1b4332;color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;padding:10px 18px;border-radius:6px;'>
+                              📥 Download Book #{$bNum} (PDF)
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>";
             }
+
             $emailPayload['htmlContent'] = "
-                <h2>Hi {$firstName},</h2>
-                <p>Thank you for requesting <strong>{$product['name']}</strong>!</p>
-                <p>Here are your instant digital download links to access all 3 guides immediately:</p>
-                {$booksHtml}
-                <p style='margin-top:20px; font-size:14px; color:#64748b;'>To your lasting health & vibrant energy,<br><strong>Sophia Carter</strong></p>
-            ";
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Your 3 Free E-Books Are Ready</title>
+</head>
+<body style=\"margin:0;padding:0;background-color:#0b1120;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1e293b;\">
+  <table role='presentation' border='0' cellpadding='0' cellspacing='0' width='100%' style='background-color:#0b1120;padding:30px 15px;'>
+    <tr>
+      <td align='center'>
+        <table role='presentation' border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width:620px;background-color:#f8fafc;border-radius:16px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.1);'>
+          
+          <tr>
+            <td style='background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);padding:28px 30px;text-align:center;border-bottom:3px solid #f59e0b;'>
+              <span style='display:inline-block;background:rgba(245,158,11,0.2);color:#fbbf24;font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:8px;border:1px solid rgba(245,158,11,0.4);'>
+                ⚡ Instant Digital Download Bundle
+              </span>
+              <h1 style='margin:6px 0 0 0;color:#ffffff;font-size:24px;font-weight:800;letter-spacing:-0.5px;'>
+                Sophia Carter <span style='color:#f59e0b;'>Health</span>
+              </h1>
+            </td>
+          </tr>
+
+          <tr>
+            <td align='center' style='background:#ffffff;padding:20px 24px 0 24px;'>
+              <img src='{$protocol}://{$host}/weight-loss-book/assets/images/bundle-collection.jpg' alt='Free 3-Book Bundle' width='560' style='display:block;border-radius:10px;width:100%;max-width:560px;height:auto;box-shadow:0 8px 24px rgba(0,0,0,0.08);'>
+            </td>
+          </tr>
+
+          <tr>
+            <td style='padding:28px 30px 20px 30px;'>
+              <h2 style='margin:0 0 12px 0;color:#0f172a;font-size:22px;font-weight:800;line-height:1.3;'>
+                Hi {$firstName}, Your 3 Free E-Books Are Ready! 🎉
+              </h2>
+              <p style='margin:0 0 16px 0;color:#475569;font-size:15px;line-height:1.6;'>
+                Thank you for requesting the complete <strong>Women Over 40 Wellness & Weight Loss Bundle</strong>!
+              </p>
+              <p style='margin:0 0 24px 0;color:#475569;font-size:15px;line-height:1.6;'>
+                Click each button below to download your digital guides immediately:
+              </p>
+
+              {$booksCards}
+
+              <table role='presentation' border='0' cellpadding='0' cellspacing='0' width='100%' style='background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-top:10px;margin-bottom:24px;'>
+                <tr>
+                  <td>
+                    <p style='margin:0 0 6px 0;color:#334155;font-size:15px;line-height:1.6;'>
+                      Here's to your renewed health, confidence, and vibrant energy!
+                    </p>
+                    <p style='margin:0 0 2px 0;color:#0f172a;font-size:16px;font-weight:800;'>
+                      Sophia Carter
+                    </p>
+                    <p style='margin:0;color:#64748b;font-size:13px;'>
+                      Holistic Health & Wellness Specialist • Sophia Carter Health
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td style='background:#0f172a;padding:24px 30px;text-align:center;border-top:1px solid #1e293b;'>
+              <p style='margin:0 0 10px 0;color:#94a3b8;font-size:12px;line-height:1.5;'>
+                You received this email because you requested the 3 Free E-Books on <a href='https://wellnesswithsophia.cc' style='color:#f59e0b;text-decoration:none;'>wellnesswithsophia.cc</a>.
+              </p>
+              <p style='margin:0;color:#64748b;font-size:11px;'>
+                &copy; 2026 Sophia Carter Health. All rights reserved.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>";
         } else {
             $emailPayload['htmlContent'] = "
                 <h2>Hi {$firstName},</h2>
