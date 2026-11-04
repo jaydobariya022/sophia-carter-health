@@ -90,7 +90,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var successDesc = successBox ? successBox.querySelector('.success-desc') : null;
         if (successDesc) {
-          successDesc.innerHTML = "We've dispatched your 3 digital copies directly to <strong>" + emailVal + "</strong>. You can also download them instantly below! 📬";
+          successDesc.innerHTML = "We've sent your complete 3-Book Bundle directly to <strong>" + emailVal + "</strong>.<br>Please check your email inbox right now to access your guides! 📬";
+        }
+
+        // Tailor the email app link if possible
+        var openEmailBtn = successBox ? successBox.querySelector('.email-open-reminder-btn') : null;
+        if (openEmailBtn && emailVal.indexOf('@') !== -1) {
+          var domain = emailVal.split('@')[1].toLowerCase();
+          if (domain.indexOf('gmail') !== -1) {
+            openEmailBtn.href = 'https://mail.google.com';
+          } else if (domain.indexOf('yahoo') !== -1) {
+            openEmailBtn.href = 'https://mail.yahoo.com';
+          } else if (domain.indexOf('outlook') !== -1 || domain.indexOf('hotmail') !== -1 || domain.indexOf('live') !== -1) {
+            openEmailBtn.href = 'https://outlook.live.com';
+          } else {
+            openEmailBtn.href = 'mailto:' + emailVal;
+          }
         }
       })
       .catch(function (err) {
@@ -121,7 +136,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var successDesc = successBox ? successBox.querySelector('.success-desc') : null;
         if (successDesc) {
-          successDesc.innerHTML = "We've dispatched your 3 digital copies directly to <strong>" + emailVal + "</strong>. You can also download them instantly below! 📬";
+          successDesc.innerHTML = "We've sent your complete 3-Book Bundle directly to <strong>" + emailVal + "</strong>.<br>Please check your email inbox right now to access your guides! 📬";
+        }
+
+        // Tailor the email app link if possible
+        var openEmailBtn = successBox ? successBox.querySelector('.email-open-reminder-btn') : null;
+        if (openEmailBtn && emailVal.indexOf('@') !== -1) {
+          var domain = emailVal.split('@')[1].toLowerCase();
+          if (domain.indexOf('gmail') !== -1) {
+            openEmailBtn.href = 'https://mail.google.com';
+          } else if (domain.indexOf('yahoo') !== -1) {
+            openEmailBtn.href = 'https://mail.yahoo.com';
+          } else if (domain.indexOf('outlook') !== -1 || domain.indexOf('hotmail') !== -1 || domain.indexOf('live') !== -1) {
+            openEmailBtn.href = 'https://outlook.live.com';
+          } else {
+            openEmailBtn.href = 'mailto:' + emailVal;
+          }
         }
       });
   }
