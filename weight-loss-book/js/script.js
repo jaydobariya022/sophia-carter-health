@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var payload = {
       full_name: nameVal,
       email: emailVal,
-      product_id: 'weight-loss-reset',
+      product_id: 'women-40-plus-bundle',
       marketing_consent: consentVal,
-      source: 'weight_loss_landing_page'
+      source: 'women_40_plus_landing_page'
     };
 
     fetch('/api/pdf-request/index.php', {
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(function (data) {
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'GET INSTANT ACCESS NOW';
+          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'GET ALL 3 FREE E-BOOKS NOW';
         }
 
         if (!data.success) {
@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof fbq === 'function') {
           try {
             fbq('track', 'Lead', {
-              content_name: data.productName || '7-Minute Weight Loss Reset EBook',
-              category: 'Free Download'
+              content_name: 'Women Over 40 3-Book Bundle',
+              category: 'Free Download Bundle'
             });
           } catch (err) { }
         }
@@ -90,21 +90,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var successDesc = successBox ? successBox.querySelector('.success-desc') : null;
         if (successDesc) {
-          successDesc.innerHTML = "We've dispatched your digital copy of <strong>The 7-Minute Weight Loss Reset</strong> directly to <strong>" + emailVal + "</strong>. Please check your inbox (and spam/promotions folder)! 📬";
+          successDesc.innerHTML = "We've dispatched your 3 digital copies directly to <strong>" + emailVal + "</strong>. You can also download them instantly below! 📬";
         }
       })
       .catch(function (err) {
         console.warn('[PDF Email Request Processed]', err);
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'GET INSTANT ACCESS NOW';
+          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'GET ALL 3 FREE E-BOOKS NOW';
         }
 
         // Fire Meta Pixel Lead Event
         if (typeof fbq === 'function') {
           try {
             fbq('track', 'Lead', {
-              content_name: '7-Minute Weight Loss Reset EBook',
+              content_name: 'Women Over 40 3-Book Bundle',
               category: 'PDF Email Request'
             });
           } catch (err) { }
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var successDesc = successBox ? successBox.querySelector('.success-desc') : null;
         if (successDesc) {
-          successDesc.innerHTML = "We've dispatched your digital copy of <strong>The 7-Minute Weight Loss Reset</strong> directly to <strong>" + emailVal + "</strong>. Please check your inbox (and spam/promotions folder)! 📬";
+          successDesc.innerHTML = "We've dispatched your 3 digital copies directly to <strong>" + emailVal + "</strong>. You can also download them instantly below! 📬";
         }
       });
   }
@@ -133,6 +133,41 @@ document.addEventListener('DOMContentLoaded', function () {
       processLeadDownload(e, heroForm, 'hero-download-success');
     });
   }
+
+  // Helper function to trigger download for all 3 PDFs at once
+  window.downloadAllThreeBooks = function() {
+    var books = [
+      { url: '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf', name: 'Why-the-Scale-Wont-Budge-After-40.pdf' },
+      { url: '/weight-loss-book/assets/images/Sunday-Prep-Easy-Week.pdf', name: 'Sunday-Prep-Easy-Week.pdf' },
+      { url: '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf', name: 'The-7-Minute-Weight-Loss-Reset.pdf' }
+    ];
+    books.forEach(function(item, index) {
+      setTimeout(function() {
+        var link = document.createElement('a');
+        link.href = item.url;
+        link.download = item.name;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, index * 400);
+    });
+  };
+
+  // Smooth scroll to lead form for any .scroll-to-claim buttons
+  document.querySelectorAll('.scroll-to-claim, a[href="#lead-form-section"]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById('lead-form-section') || document.getElementById('hero-lead-form');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        var nameInput = target.querySelector('input[name="full_name"]');
+        if (nameInput) {
+          setTimeout(function() { nameInput.focus(); }, 600);
+        }
+      }
+    });
+  });
 
   // ── 14-Hour Continuous Urgency Countdown Timer ──────────────────────────────
   (function initUrgencyCountdown() {
@@ -188,9 +223,13 @@ document.addEventListener('DOMContentLoaded', function () {
       var minutes = Math.floor((totalSeconds % 3600) / 60);
       var seconds = totalSeconds % 60;
 
-      if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-      if (minsEl) minsEl.textContent = String(minutes).padStart(2, '0');
-      if (secsEl) secsEl.textContent = String(seconds).padStart(2, '0');
+      var hStr = String(hours).padStart(2, '0');
+      var mStr = String(minutes).padStart(2, '0');
+      var sStr = String(seconds).padStart(2, '0');
+
+      document.querySelectorAll('#cd-hours, .cd-hours').forEach(function(el) { el.textContent = hStr; });
+      document.querySelectorAll('#cd-minutes, .cd-minutes').forEach(function(el) { el.textContent = mStr; });
+      document.querySelectorAll('#cd-seconds, .cd-seconds').forEach(function(el) { el.textContent = sStr; });
     }
 
     tick();

@@ -29,12 +29,44 @@ $config = [
 // Product Allowlist Catalog
 $products = [
     'weight-loss-reset' => [
-        'name' => 'The 7-Minute Weight Loss Reset',
-        'pdfPath' => '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf'
+        'name' => 'The Complete Women Over 40 Wellness & Weight Loss Bundle (3 Free E-Books)',
+        'pdfPath' => '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf',
+        'books' => [
+            [
+                'name' => "Why the Scale Won't Budge After 40",
+                'path' => '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf'
+            ],
+            [
+                'name' => "Sunday Prep, Easy Week",
+                'path' => '/weight-loss-book/assets/images/Sunday-Prep-Easy-Week.pdf'
+            ],
+            [
+                'name' => "The 7-Minute Weight Loss Reset",
+                'path' => '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf'
+            ]
+        ]
+    ],
+    'women-40-plus-bundle' => [
+        'name' => 'The Complete Women Over 40 Wellness & Weight Loss Bundle (3 Free E-Books)',
+        'pdfPath' => '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf',
+        'books' => [
+            [
+                'name' => "Why the Scale Won't Budge After 40",
+                'path' => '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf'
+            ],
+            [
+                'name' => "Sunday Prep, Easy Week",
+                'path' => '/weight-loss-book/assets/images/Sunday-Prep-Easy-Week.pdf'
+            ],
+            [
+                'name' => "The 7-Minute Weight Loss Reset",
+                'path' => '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf'
+            ]
+        ]
     ],
     'womens-health-guide' => [
         'name' => "Sophia's Women's Health & Wellness Guide",
-        'pdfPath' => '/weight-loss-book/assets/images/The-7-Minute-Weight-Loss-Reset.pdf'
+        'pdfPath' => '/weight-loss-book/assets/images/Why-the-Scale-Wont-Budge-After-40.pdf'
     ]
 ];
 
@@ -161,13 +193,32 @@ if ($config['brevo_api_key'] && $config['brevo_api_key'] !== 'YOUR_BREVO_API_KEY
             'SUPPORT_EMAIL' => $config['sender_email']
         ];
     } else {
-        $emailPayload['subject'] = 'Your PDF Is Ready - ' . $product['name'];
-        $emailPayload['htmlContent'] = "
-            <h2>Hi {$firstName},</h2>
-            <p>Thank you for requesting your free copy of <strong>{$product['name']}</strong>!</p>
-            <p><a href='{$downloadUrl}' style='display:inline-block; background:#f59e0b; color:#111; padding:12px 24px; text-decoration:none; font-weight:bold; border-radius:6px;'>📥 DOWNLOAD YOUR PDF NOW</a></p>
-            <p>If link does not open, copy this: {$downloadUrl}</p>
-        ";
+        $emailPayload['subject'] = 'Your 3 Free E-Books Are Ready - ' . $product['name'];
+        if (!empty($product['books'])) {
+            $booksHtml = '';
+            foreach ($product['books'] as $idx => $b) {
+                $bUrl = $protocol . '://' . $host . $b['path'];
+                $bNum = $idx + 1;
+                $booksHtml .= "<div style='margin:14px 0; padding:12px 16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px;'>
+                    <p style='margin:0 0 6px 0; font-size:15px; font-weight:bold; color:#0f172a;'>Book #{$bNum}: {$b['name']}</p>
+                    <a href='{$bUrl}' style='display:inline-block; background:#1b4332; color:#ffffff; padding:10px 20px; text-decoration:none; font-weight:bold; border-radius:6px; font-size:14px;'>📥 Download Book #{$bNum} (PDF)</a>
+                </div>";
+            }
+            $emailPayload['htmlContent'] = "
+                <h2>Hi {$firstName},</h2>
+                <p>Thank you for requesting <strong>{$product['name']}</strong>!</p>
+                <p>Here are your instant digital download links to access all 3 guides immediately:</p>
+                {$booksHtml}
+                <p style='margin-top:20px; font-size:14px; color:#64748b;'>To your lasting health & vibrant energy,<br><strong>Sophia Carter</strong></p>
+            ";
+        } else {
+            $emailPayload['htmlContent'] = "
+                <h2>Hi {$firstName},</h2>
+                <p>Thank you for requesting your free copy of <strong>{$product['name']}</strong>!</p>
+                <p><a href='{$downloadUrl}' style='display:inline-block; background:#f59e0b; color:#111; padding:12px 24px; text-decoration:none; font-weight:bold; border-radius:6px;'>📥 DOWNLOAD YOUR PDF NOW</a></p>
+                <p>If link does not open, copy this: {$downloadUrl}</p>
+            ";
+        }
     }
 
     $ch2 = curl_init('https://api.brevo.com/v3/smtp/email');
@@ -196,7 +247,8 @@ if ($config['brevo_api_key'] && $config['brevo_api_key'] !== 'YOUR_BREVO_API_KEY
 // ── 6. Return Success Response ───────────────────────────────────────────────
 echo json_encode([
     'success' => true,
-    'message' => 'Success! Check your inbox for your PDF, or download it directly below.',
+    'message' => 'Success! Check your inbox for your 3 free eBooks, or download them directly below.',
     'downloadUrl' => $downloadUrl,
-    'productName' => $product['name']
+    'productName' => $product['name'],
+    'books' => $product['books'] ?? []
 ]);
