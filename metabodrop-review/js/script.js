@@ -44,12 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var finalAffiliateUrl = buildAffiliateUrl();
 
-  // Apply to all CTA links marked with .affiliate-link or [data-affiliate]
-  var ctaLinks = document.querySelectorAll('a.affiliate-link, a[data-affiliate]');
+  // Apply to all CTA links
+  var ctaLinks = document.querySelectorAll('a.cta-direct-action, a.btn-high-ctr, a.btn-cta-gold, a.header-cta-btn, a.sticky-cta-btn, a[data-outbound], a.affiliate-link, a[data-affiliate]');
   ctaLinks.forEach(function (link) {
     link.href = finalAffiliateUrl;
     link.target = '_blank';
-    link.rel = 'noopener sponsored';
+    link.rel = 'noopener';
 
     // Meta Pixel Outbound Click Tracking
     link.addEventListener('click', function () {

@@ -28,6 +28,14 @@
     {
       "source": "/metabodrop review/",
       "destination": "/metabodrop-review/index.html"
+    },
+    {
+      "source": "/metabodrop%20review",
+      "destination": "/metabodrop-review/index.html"
+    },
+    {
+      "source": "/metabodrop%20review/",
+      "destination": "/metabodrop-review/index.html"
     }
   ]
 }
