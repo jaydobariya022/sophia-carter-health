@@ -10,11 +10,23 @@
       "destination": "/metabodrop-review/index.html"
     },
     {
-      "source": "/metabodrop-review/(.*)",
-      "destination": "/metabodrop-review/$1"
+      "source": "/metabodrop-review/",
+      "destination": "/metabodrop-review/index.html"
     },
     {
       "source": "/metabodrop",
+      "destination": "/metabodrop-review/index.html"
+    },
+    {
+      "source": "/metabodrop/",
+      "destination": "/metabodrop-review/index.html"
+    },
+    {
+      "source": "/metabodrop review",
+      "destination": "/metabodrop-review/index.html"
+    },
+    {
+      "source": "/metabodrop review/",
       "destination": "/metabodrop-review/index.html"
     }
   ]
