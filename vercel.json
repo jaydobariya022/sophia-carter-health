@@ -4,6 +4,18 @@
     {
       "source": "/api/pdf-request/index.php",
       "destination": "/api/pdf-request"
+    },
+    {
+      "source": "/metabodrop-review",
+      "destination": "/metabodrop-review/index.html"
+    },
+    {
+      "source": "/metabodrop-review/(.*)",
+      "destination": "/metabodrop-review/$1"
+    },
+    {
+      "source": "/metabodrop",
+      "destination": "/metabodrop-review/index.html"
     }
   ]
 }
