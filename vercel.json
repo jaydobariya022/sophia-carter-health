@@ -76,6 +76,38 @@
     {
       "source": "/phytomem%20one/",
       "destination": "/phytomem-one-review/index.html"
+    },
+    {
+      "source": "/prodentim-review",
+      "destination": "/prodentim-review/index.html"
+    },
+    {
+      "source": "/prodentim-review/",
+      "destination": "/prodentim-review/index.html"
+    },
+    {
+      "source": "/prodentim",
+      "destination": "/prodentim-review/index.html"
+    },
+    {
+      "source": "/prodentim/",
+      "destination": "/prodentim-review/index.html"
+    },
+    {
+      "source": "/prodentim review",
+      "destination": "/prodentim-review/index.html"
+    },
+    {
+      "source": "/prodentim review/",
+      "destination": "/prodentim-review/index.html"
+    },
+    {
+      "source": "/prodentim%20review",
+      "destination": "/prodentim-review/index.html"
+    },
+    {
+      "source": "/prodentim%20review/",
+      "destination": "/prodentim-review/index.html"
     }
   ]
 }
