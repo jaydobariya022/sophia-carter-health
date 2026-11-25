@@ -36,6 +36,46 @@
     {
       "source": "/metabodrop%20review/",
       "destination": "/metabodrop-review/index.html"
+    },
+    {
+      "source": "/phytomem-one-review",
+      "destination": "/phytomem-one-review/index.html"
+    },
+    {
+      "source": "/phytomem-one-review/",
+      "destination": "/phytomem-one-review/index.html"
+    },
+    {
+      "source": "/phytomem-one",
+      "destination": "/phytomem-one-review/index.html"
+    },
+    {
+      "source": "/phytomem-one/",
+      "destination": "/phytomem-one-review/index.html"
+    },
+    {
+      "source": "/phytomem",
+      "destination": "/phytomem-one-review/index.html"
+    },
+    {
+      "source": "/phytomem/",
+      "destination": "/phytomem-one-review/index.html"
+    },
+    {
+      "source": "/phytomem one",
+      "destination": "/phytomem-one-review/index.html"
+    },
+    {
+      "source": "/phytomem one/",
+      "destination": "/phytomem-one-review/index.html"
+    },
+    {
+      "source": "/phytomem%20one",
+      "destination": "/phytomem-one-review/index.html"
+    },
+    {
+      "source": "/phytomem%20one/",
+      "destination": "/phytomem-one-review/index.html"
     }
   ]
 }
